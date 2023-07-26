@@ -1,0 +1,54 @@
+$theme-colors: (
+  "primary": #5e3f61,
+  "danger": #a94442,
+  "alert": #EB5757,
+  "success": #3c9d90,
+  "secondary":  #5197D4,
+  "warning": #dfba4b,
+  "orange": #F2994A,
+  "lightBlue": #f6fafd
+);
+
+/* Menu items */
+$menuHover: #3B6AB1;
+$breadcrumbHover: #3B6AB1;
+$breadcrumbLink: #000000;
+$generalBackground: #f6fafd;
+$searchBackground: #f6f6f6;
+$searchBorder:  #ced4da;
+$headerIcons: #707070;
+$messageCount: red;
+$warningtext: red;
+$widgetWarning: #EB5757;
+
+/* These to be edited */
+$hoistGrey: #666E6E;
+$hoistGreyLight: #e9ecef;
+$hoistGreyLightTransparent: #e9ecef50;
+$hoistGreyDark: #3E4545;
+$hoistLightPurple: #E9ECEF;
+$bgHover: rgba(227,226,225,0.6);
+$hoistFadeWhite: #f5f5f5;
+$white: #FFFFFF;
+$black: #333333;
+$hoistStageCircle: #3B6AB1;
+$hoistStageCircleDisabled: $hoistGrey;
+$hoistCardRed: red;
+$hoistCardBlue: blue;
+$hoistCardGreen: green;
+$hoistCardYellow: yellow;
+$hoistCardUserBlue: #3B6AB1;
+$hoistSplashScreenYellow: cornsilk;
+
+/* Toggle switch */
+$toggle-background-color-on: map-get($theme-colors, 'primary');
+$toggle-background-color-off: $hoistGrey;
+$toggle-control-color: $white;
+$toggle-width: 3.6rem;
+$toggle-height: 1.8rem;
+$toggle-gutter: 0.2rem;
+$toggle-radius: 50%;
+$toggle-control-speed: .15s;
+$toggle-control-ease: ease-in;
+$toggle-radius: $toggle-height / 2;
+$toggle-control-size: $toggle-height - ($toggle-gutter * 2);

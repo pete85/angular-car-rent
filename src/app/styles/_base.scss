@@ -1,0 +1,834 @@
+@import "variables";
+
+html {
+  font-size: 14px;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+/*****************************************************
+                       TEXT
+*****************************************************/
+
+* {
+  font-family: 'Montserrat', Helvetica Neue, sans-serif;
+}
+
+h1 {
+  font: 700 2.4rem/2.8rem 'Montserrat', Helvetica Neue, sans-serif;
+}
+
+h2 {
+  font: 700 2rem/2.4rem 'Montserrat', Helvetica Neue, sans-serif;
+}
+
+h3 {
+  font: 700 1.6rem/2rem 'Montserrat', Helvetica Neue, sans-serif;
+}
+
+h4 {
+  font: 700 1.2rem/1.8rem 'Montserrat', Helvetica Neue, sans-serif;
+}
+
+p {
+  font: 400 1rem/1.6rem 'Montserrat', Helvetica Neue, sans-serif;
+  margin: 0 !important;
+}
+
+.font100 {
+  font-weight: 100 !important;
+}
+
+.font200 {
+  font-weight: 200 !important;
+}
+
+.font300 {
+  font-weight: 300 !important;
+}
+
+.font400 {
+  font-weight: 400 !important;
+}
+
+.font500 {
+  font-weight: 500 !important;
+}
+
+.font600 {
+  font-weight: 600 !important;
+}
+
+.font700 {
+  font-weight: 700 !important;
+}
+
+.font800 {
+  font-weight: 800 !important;
+}
+
+.txtCenter {
+  text-align: center;
+}
+
+/*****************************************************
+                     TEXT END
+*****************************************************/
+
+/*****************************************************
+                    MARGINS
+*****************************************************/
+
+/*ALL*/
+
+.margin0 {
+  margin: 0 !important;
+}
+
+.margin0auto {
+  margin: 0 auto !important;
+}
+
+.margin5 {
+  margin: 5px !important;
+}
+
+.margin10 {
+  margin: 10px !important;
+}
+
+.margin15 {
+  margin: 15px !important;
+}
+
+.margin20 {
+  margin: 20px !important;
+}
+
+.margin30 {
+  margin: 30px !important;
+}
+
+.margin40 {
+  margin: 40px !important;
+}
+
+.margin50 {
+  margin: 50px !important;
+}
+
+/*TOP*/
+
+.margin-t-0 {
+  margin-top: 0 !important;
+}
+
+.margin-t-5 {
+  margin-top: 5px !important;
+}
+
+.margin-t-10 {
+  margin-top: 10px !important;
+}
+
+.margin-t-15 {
+  margin-top: 15px !important;
+}
+
+.margin-t-20 {
+  margin-top: 20px !important;
+}
+
+.margin-t-30 {
+  margin-top: 30px !important;
+}
+
+.margin-t-40 {
+  margin-top: 40px !important;
+}
+
+.margin-t-50 {
+  margin-top: 50px !important;
+}
+
+.margin-t-60 {
+  margin-top: 60px !important;
+}
+
+/*TOP BOTTOM*/
+.margin-tb-5 {
+  margin: 5px 0 !important;
+}
+
+.margin-tb-10 {
+  margin: 10px 0 !important;
+}
+
+.margin-tb-15 {
+  margin: 15px 0 !important;
+}
+
+.margin-tb-20 {
+  margin: 20px 0 !important;
+}
+
+.margin-tb-30 {
+  margin: 30px 0 !important;
+}
+
+.margin-tb-40 {
+  margin: 40px 0 !important;
+}
+
+.margin-tb-50 {
+  margin: 50px 0 !important;
+}
+
+.margin-b-5 {
+  margin-bottom: 5px !important;
+}
+
+.margin-b-10 {
+  margin-bottom: 10px !important;
+}
+
+.margin-b-15 {
+  margin-bottom: 15px !important;
+}
+
+.margin-b-20 {
+  margin-bottom: 20px !important;
+}
+
+.margin-b-30 {
+  margin-bottom: 30px !important;
+}
+
+.margin-b-40 {
+  margin-bottom: 40px !important;
+}
+
+.margin-b-50 {
+  margin-bottom: 50px !important;
+}
+
+.margin-b-55 {
+  margin-bottom: 55px !important;
+}
+
+/*LEFT RIGHT*/
+.margin-lr-5 {
+  margin: 0 5px !important;
+}
+
+.margin-lr-8 {
+  margin: 0 8px !important;
+}
+
+.margin-lr-16 {
+  margin: 0 16px !important;
+}
+
+.margin-lr-24 {
+  margin: 0 24px !important;
+}
+
+.margin-lr-10 {
+  margin: 0 10px !important;
+}
+
+.margin-lr-20 {
+  margin: 0 20px !important;
+}
+
+.margin-lr-30 {
+  margin: 0 30px !important;
+}
+
+.margin-lr-40 {
+  margin: 0 40px !important;
+}
+
+.margin-lr-80 {
+  margin: 0 50px !important;
+}
+
+.margin-l-5 {
+  margin-left: 5px !important;
+}
+
+.margin-l-10 {
+  margin-left: 10px !important;
+}
+
+.margin-l-15 {
+  margin-left: 15px !important;
+}
+
+.margin-l-20 {
+  margin-left: 20px !important;
+}
+
+.margin-l-60 {
+  margin-left: 60px !important;
+}
+
+.margin-r-5 {
+  margin-right: 5px !important;
+}
+
+.margin-r-10 {
+  margin-right: 10px !important;
+}
+
+.margin-r-15 {
+  margin-right: 15px !important;
+}
+
+.margin-r-20 {
+  margin-right: 20px !important;
+}
+
+/*MENU-ALIGNMENT-WRAPPER*/
+.content-body-wrapper{
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+/*****************************************************
+                    MARGINS END
+*****************************************************/
+
+/*****************************************************
+                    PADDING
+*****************************************************/
+
+/*ALL*/
+
+.padding0 {
+  padding: 0 !important;
+}
+
+.padding5 {
+  padding: 5px !important;
+}
+
+.padding10 {
+  padding: 10px !important;
+}
+
+.padding15 {
+  padding: 15px !important;
+}
+
+.padding20 {
+  padding: 20px !important;
+}
+
+.padding30 {
+  padding: 30px !important;
+}
+
+.padding40 {
+  padding: 40px !important;
+}
+
+.padding50 {
+  padding: 50px !important;
+}
+
+/*TOP BOTTOM*/
+.padding-tb-5 {
+  padding: 5px 0 !important;
+}
+
+.padding-tb-10 {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.padding-tb-15 {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+.padding-tb-20 {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+.padding-tb-25 {
+  padding: 25px 0 !important;
+}
+
+.padding-tb-30 {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+.padding-tb-40 {
+  padding: 40px 0 !important;
+}
+
+.padding-tb-50 {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+
+/*TOP*/
+.padding-t-5 {
+  padding-top: 5px !important;
+}
+
+.padding-t-10 {
+  padding-top: 10px !important;
+}
+
+.padding-t-20 {
+  padding-top: 20px !important;
+}
+
+.padding-t-30 {
+  padding-top: 30px !important;
+}
+
+.padding-t-40 {
+  padding-top: 40px !important;
+}
+
+.padding-t-50 {
+  padding-top: 50px !important;
+}
+
+/*BOTTOM*/
+.padding-b-5 {
+  padding-bottom: 5px !important;
+}
+
+.padding-b-10 {
+  padding-bottom: 10px !important;
+}
+
+.padding-b-15 {
+  padding-bottom: 15px !important;
+}
+
+.padding-b-20 {
+  padding-bottom: 20px !important;
+}
+
+.padding-b-30 {
+  padding-bottom: 30px !important;
+}
+
+.padding-b-40 {
+  padding-bottom: 40px !important;
+}
+
+.padding-b-50 {
+  padding-bottom: 50px !important;
+}
+
+.padding-b-60 {
+  padding-bottom: 60px !important;
+}
+
+/*LEFT RIGHT*/
+.padding-lr-5 {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.padding-lr-10 {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.padding-lr-15 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.padding-lr-20 {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.padding-lr-30 {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+.padding-lr-40 {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+.padding-lr-50 {
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+}
+
+/*** PADDING LEFT ***/
+
+.padding-l-0 {
+  padding-left: 0 !important;
+}
+
+.padding-l-10 {
+  padding-left: 10px !important;
+}
+
+.padding-l-20 {
+  padding-left: 20px !important;
+}
+
+.padding-l-15 {
+  padding-left: 15px !important;
+}
+
+/*** PADDING RIGHT ***/
+
+.padding-r-0 {
+  padding-right: 0 !important;
+}
+
+.padding-r-10 {
+  padding-right: 10px !important;
+}
+
+.padding-r-15 {
+  padding-right: 15px !important;
+}
+
+.padding-r-20 {
+  padding-right: 20px !important;
+}
+
+/*****************************************************
+                    PADDING END
+*****************************************************/
+
+/*****************************************************
+                      BORDERS
+*****************************************************/
+
+.border-1px {
+  border: 1px solid $hoistGrey;
+}
+
+.border-2px {
+  border: 2px solid $hoistGrey;
+}
+
+.border-top-1px {
+  border-top: 1px solid $hoistGrey;
+}
+
+.border-right-1px {
+  border-right: 1px solid $hoistGrey;
+}
+
+.border-bottom-1px {
+  border-bottom: 1px solid $hoistGrey;
+}
+
+.border-bottom-1px-lightGrey {
+  border-bottom: 1px solid $hoistGreyLight;
+}
+
+.border-bottom-1px-white {
+  border-bottom: 1px solid $white;
+}
+
+.border-left-1px {
+  border-left: 1px solid $hoistGrey;
+}
+
+.border-top-2px {
+  border-top: 2px solid $hoistGrey;
+}
+
+.border-right-2px {
+  border-right: 2px solid $hoistGrey;
+}
+
+.border-bottom-2px {
+  border-bottom: 2px solid $hoistGrey;
+}
+
+.border-left-2px {
+  border-left: 2px solid $hoistGrey;
+}
+
+.border-radius-5px {
+  border-radius: 5px;
+}
+
+.border-radius-10px {
+  border-radius: 10px;
+}
+
+.border-radius-15px {
+  border-radius: 15px;
+}
+
+.border-radius-20px {
+  border-radius: 20px;
+}
+
+/*****************************************************
+                    BORDERS END
+*****************************************************/
+
+/*****************************************************
+                      BACKGROUNDS
+*****************************************************/
+
+.bgGreyDark {
+  background-color: $hoistGreyDark !important;
+}
+
+.bgGreyLight {
+  background-color: $hoistGreyLight !important;
+}
+
+.bgGreen {
+  background-color: map-get($theme-colors, 'success') !important;
+}
+
+.bgRed {
+  background-color: map-get($theme-colors, 'danger') !important;
+}
+
+.bgBlue {
+  background-color: map-get($theme-colors, 'lightBlue') !important;
+}
+
+.bgBlue {
+  background-color: map-get($theme-colors, 'lightBlue') !important;
+}
+
+/*****************************************************
+                    BACKGROUNDS END
+*****************************************************/
+
+/*****************************************************
+                        BUTTONS
+*****************************************************/
+
+.btnFixedBottomRight {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.btnFixedBottomLeft {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+}
+
+.btnFixedTopRight {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+}
+
+.btnFixedTopLeft {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+}
+
+/*****************************************************
+                    BUTTONS END
+*****************************************************/
+
+/*****************************************************
+                      DIMENSIONS
+*****************************************************/
+
+.w10px {
+  width: 10px !important;
+}
+
+.w20px {
+  width: 20px !important;
+}
+
+.w30px {
+  width: 30px !important;
+}
+
+.w40px {
+  width: 40px !important;
+}
+
+.w50px {
+  width: 50px !important;
+}
+
+.w60px {
+  width: 60px !important;
+}
+
+.w70px {
+  width: 70px !important;
+}
+
+.w80px {
+  width: 80px !important;
+}
+
+.w90px {
+  width: 90px !important;
+}
+
+.w100px {
+  width: 100px !important;
+}
+
+.w110px {
+  width: 110px !important;
+}
+
+.w120px {
+  width: 120px !important;
+}
+
+.w130px {
+  width: 130px !important;
+}
+
+.w140px {
+  width: 140px !important;
+}
+
+.w150px {
+  width: 150px !important;
+}
+
+.w200px {
+  width: 200px !important;
+}
+
+.w300px {
+  width: 300px !important;
+}
+
+.w400px {
+  width: 400px !important;
+}
+
+.w500px {
+  width: 500px !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.h50px {
+  height: 50px;
+}
+
+.h60px {
+  height: 60px;
+}
+
+.h70px {
+  height: 70px;
+}
+
+.h80px {
+  height: 80px;
+}
+
+.h90px {
+  height: 90px;
+}
+
+.h100px {
+  height: 100px;
+}
+
+.h120px {
+  height: 120px;
+}
+
+.h140px {
+  height: 140px;
+}
+
+.h160px {
+  height: 160px;
+}
+
+.h180px {
+  height: 180px;
+}
+
+.h200px {
+  height: 200px;
+}
+
+.h100 {
+  height: 100% !important;
+}
+
+/*****************************************************
+                   DIMENSIONS END
+*****************************************************/
+
+.dividerDiv {
+  height: 3px;
+  border-bottom: 1px solid $hoistGreyLight;
+}
+
+/*****************************************************
+              OCCUPANCY - FULL CALENDAR
+*****************************************************/
+
+.band-1, .band-2, .band-3, .band-4, .band-5 {
+  color: $white;
+  font-weight: 700;
+  text-align: center;
+}
+
+.band-1 {
+  background-color: map-get($theme-colors, 'danger');
+}
+
+.band-2 {
+  background-color: map-get($theme-colors, 'orange');
+}
+
+.band-3 {
+  background-color: map-get($theme-colors, 'warning');
+}
+
+.band-4 {
+  background-color: map-get($theme-colors, 'success');
+}
+
+.band-5 {
+  background-color: map-get($theme-colors, 'secondary');
+}
+
+.txtVertical {
+  div {
+    font-size: 1.3em;
+    font-weight: 600;
+    writing-mode: vertical-lr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/*****************************************************
+            OCCUPANCY - FULL CALENDAR END
+*****************************************************/
