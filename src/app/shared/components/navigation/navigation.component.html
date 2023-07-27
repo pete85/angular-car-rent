@@ -1,0 +1,89 @@
+<div fxLayout="column" fxFlex fxLayoutAlign="space-between space-between" class="h100" id="navMenu" *ngIf="menu">
+    <div fxFlex [hidden]="!fullMenu">
+        <mat-accordion *ngIf="menu" class="mainNavigation nav-list">
+
+            <!-- *********************************************** -->
+            <!-- ****************** FULL MENU ****************** -->
+            <!-- *********************************************** -->
+            <div class="navElement border-bottom-1px" *ngFor="let group of menu.entries">
+                <div fxFlex fxLayoutAlign="center center" class="homeLink nav-list-item" *ngIf="!group.isHidden && (!group.items || !group.items.length)"
+                     [routerLink]="group.routerLink" routerLinkActive="active" [class.active-menu-item]="group.active"
+                     (click)="selectNavigationParent(group.name)">
+                    <div fxLayout fxFlex fxLayoutAlign="space-between center">
+                        <h3>{{group?.name | capitalise}}</h3>
+                        <mat-icon class="margin-r-10">{{group?.icon}}</mat-icon>
+                    </div>
+                </div>
+
+                <mat-expansion-panel (opened)="panelOpenState" (closed)="!panelOpenState"
+                                     *ngIf="!group.isHidden && group.items && group.items.length">
+                    <mat-expansion-panel-header [class.active-menu-item]="group.active" class="nav-list-item mat-menu-header">
+                        <mat-panel-title class="nav-list-item-title">
+                            <mat-icon class="margin-r-10">{{group?.icon}}</mat-icon>
+                            <h3>{{group?.name| capitalise}}</h3>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-nav-list>
+                        <mat-list-item *ngFor="let item of group.items" [routerLink]="item.routerLink ? item.routerLink : '/'"
+                                       (click)="selectNavigationParent(group.name)" class="padding-l-20 nav-list-item"
+                                       [routerLinkActive]="group.code + ' active-menu-item'">
+                            <mat-icon class="margin-r-10">{{item?.icon}}</mat-icon>
+                            <p class="margin0">{{item?.name| capitalise}}</p>
+                        </mat-list-item>
+                    </mat-nav-list>
+                </mat-expansion-panel>
+            </div>
+
+        </mat-accordion>
+    </div>
+
+    <!-- ********************************************** -->
+    <!-- *************** MINIMISED MENU *************** -->
+    <!-- ********************************************** -->
+    <div fxLayout="column" fxFlex *ngIf="!fullMenu && menu" class="nav-list">
+        <div fxLayoutAlign="center center" *ngFor="let group of menu.entries" class="border-bottom-1px">
+
+            <!-- *** Menu item with no children *** -->
+            <button mat-button class="w100 padding10 nav-list-item"
+                    *ngIf="!group.isHidden && (!group.items || !group.items.length)" [routerLink]="group.routerLink"
+                    [matTooltip]="group?.name | capitalise"
+                    matTooltipPosition="right" [class.active-menu-item]="group.active"
+                    (click)="selectNavigationParent(group.name)">
+                <mat-icon class="margin-r-10">{{group?.icon}}</mat-icon>
+            </button>
+
+            <!-- *** Menu item with children *** -->
+            <button mat-button [matMenuTriggerFor]="afterMenu" class="w100 padding10 nav-list-item"
+                    *ngIf="!group.isHidden && group.items && group.items.length"
+                    [matTooltip]="group?.name | capitalise"
+                    matTooltipPosition="right" [class.active-menu-item]="group.active">
+                <mat-icon class="margin-r-10">{{group?.icon}}</mat-icon>
+            </button>
+
+            <mat-menu #afterMenu="matMenu" xPosition="after" class="nav-list-item-matmenu">
+                <button mat-menu-item *ngFor="let item of group.items"
+                        class="nav-list-item"
+                        [routerLink]="item.routerLink ? item.routerLink : '/'"
+                        [routerLinkActive]="group.code + ' active-menu-item'"
+                        (click)="selectNavigationParent(group.name)">
+                    <mat-icon class="margin-r-10">{{item?.icon}}</mat-icon>
+                    {{item?.name | capitalise}}
+                </button>
+            </mat-menu>
+        </div>
+        <div fxFlex></div>
+    </div>
+
+
+    <!-- ********************************************* -->
+    <!-- **************** MENU TOGGLE **************** -->
+    <!-- ********************************************* -->
+    <div fxFlex="60px" fxLayoutAlign="end center" class="padding20">
+        <button mat-icon-button (click)="toggleMenuView(false)" *ngIf="fullMenu">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button mat-icon-button (click)="toggleMenuView(true)" *ngIf="!fullMenu">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+</div>

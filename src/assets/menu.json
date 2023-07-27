@@ -1,0 +1,35 @@
+{
+  "entries": [
+    {
+      "id": 1,
+      "code": "HOM",
+      "name": "home",
+      "icon": "home",
+      "isHidden": false,
+      "routerLink": "",
+      "items": [],
+      "access_roles":[0,1,2,3],
+      "active": false
+    },
+    {
+      "id": 2,
+      "code": "VEH",
+      "name": "vehicles",
+      "icon": "directions_car",
+      "isHidden": false,
+      "routerLink": "/vehicles",
+      "active": true,
+      "access_roles":[0,1,2,3]
+    },
+    {
+      "id": 4,
+      "code": "BOO",
+      "name": "bookings",
+      "icon": "calendar_month",
+      "isHidden": false,
+      "routerLink": "/bookings",
+      "active": true,
+      "access_roles":[0,1,2,3]
+    }
+  ]
+}

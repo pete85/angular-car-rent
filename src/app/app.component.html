@@ -1,9 +1,39 @@
-<div class="testDiv">
-  <h3>Test</h3>
-  <mat-chip-list aria-label="Fish selection">
-    <mat-chip>One fish</mat-chip>
-    <mat-chip>Two fish</mat-chip>
-    <mat-chip color="primary" selected>Primary fish</mat-chip>
-    <mat-chip color="accent" selected>Accent fish</mat-chip>
-  </mat-chip-list>
+<div fxLayout="row" fxFlex>
+  <mat-drawer-container class="sidenavContainer" autosize>
+    <mat-toolbar color="primary">
+      <div fxLayout fxFlex>
+        <div fxFlex="25px" fxLayoutAlign="start center" data-tour="main-menu" *ngIf="menu">
+          <mat-icon class="link-item" (click)="drawer.toggle()" data-cy="menu-icon" *ngIf="!drawer.opened">menu
+          </mat-icon>
+          <mat-icon class="link-item" (click)="drawer.toggle()" data-cy="close-menu-icon" *ngIf="drawer.opened">close
+          </mat-icon>
+        </div>
+        <div fxFlex="50px" fxLayoutAlign="center center" class="margin-r-5">
+          <a [routerLink]="'/'">
+            <img src="../assets/images/pete85/pete85_bulb.png" alt="pete85 logo">
+          </a>
+        </div>
+        <div fxFlex fxLayoutAlign="start center" id="header" *ngIf="innerWidth > 400">
+          <h2 *ngIf="activeMenuItem">{{activeMenuItem | capitalise}}</h2>
+        </div>
+      </div>
+    </mat-toolbar>
+    <mat-drawer #drawer [mode]="sidenavMode" position="start">
+      <app-navigation [menu]="menu" (menuClosed)="closeMobileMenu($event)"
+                      (menuToggled)="toggleMenu($event)"
+                      class="h100" *ngIf="menu"></app-navigation>
+    </mat-drawer>
+    <div id="main-body" #mainBody>
+      <video autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true" id="myVideo" #myVideo>
+        <source src="./assets/videos/bg-video-1.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <router-outlet></router-outlet>
+      <!--      <app-footer *ngIf="innerHeight > 450"></app-footer>-->
+    </div>
+    <mat-drawer #drawerUserProfile position="end" mode="over" id="userDrawer">
+      <app-user-profile class="h100"></app-user-profile>
+    </mat-drawer>
+  </mat-drawer-container>
+  <!--  <app-pre-loader class="pre-loader" *ngIf="isLoading || (auth.isLoading$ | async)"></app-pre-loader>-->
 </div>
