@@ -1,0 +1,230 @@
+{
+    "cars": [
+        {
+            "brand": "Mercedes-Benz",
+            "model": "Citan",
+            "type": "van",
+            "color": "red",
+            "price": "10000$",
+            "year": 2010,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Lexus",
+            "model": "GX",
+            "type": "4WD",
+            "color": "black",
+            "price": "50000$",
+            "year": 2020,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Toyota",
+            "model": "RAV4",
+            "type": "crossover",
+            "color": "gray",
+            "price": "15000$",
+            "year": 2015,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Hyundai",
+            "model": "Grand i10 Nios",
+            "type": "hatchback",
+            "color": "yellow",
+            "price": "30000$",
+            "year": 2018,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Honda",
+            "model": "Civic",
+            "type": "sedan",
+            "color": "blue",
+            "price": "25000$",
+            "year": 2010,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        }
+    ],
+    "vans": [
+        {
+            "brand": "Mercedes-Benz",
+            "model": "Citan",
+            "type": "van",
+            "color": "red",
+            "price": "10000$",
+            "year": 2010,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Lexus",
+            "model": "GX",
+            "type": "4WD",
+            "color": "black",
+            "price": "50000$",
+            "year": 2020,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Toyota",
+            "model": "RAV4",
+            "type": "crossover",
+            "color": "gray",
+            "price": "15000$",
+            "year": 2015,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Hyundai",
+            "model": "Grand i10 Nios",
+            "type": "hatchback",
+            "color": "yellow",
+            "price": "30000$",
+            "year": 2018,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Honda",
+            "model": "Civic",
+            "type": "sedan",
+            "color": "blue",
+            "price": "25000$",
+            "year": 2010,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        }
+    ],
+    "convertibles": [
+        {
+            "brand": "Mercedes-Benz",
+            "model": "Citan",
+            "type": "van",
+            "color": "red",
+            "price": "10000$",
+            "year": 2010,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Lexus",
+            "model": "GX",
+            "type": "4WD",
+            "color": "black",
+            "price": "50000$",
+            "year": 2020,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Toyota",
+            "model": "RAV4",
+            "type": "crossover",
+            "color": "gray",
+            "price": "15000$",
+            "year": 2015,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Hyundai",
+            "model": "Grand i10 Nios",
+            "type": "hatchback",
+            "color": "yellow",
+            "price": "30000$",
+            "year": 2018,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Honda",
+            "model": "Civic",
+            "type": "sedan",
+            "color": "blue",
+            "price": "25000$",
+            "year": 2010,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        }
+    ],
+    "motorcycles": [
+        {
+            "brand": "Mercedes-Benz",
+            "model": "Citan",
+            "type": "van",
+            "color": "red",
+            "price": "10000$",
+            "year": 2010,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Lexus",
+            "model": "GX",
+            "type": "4WD",
+            "color": "black",
+            "price": "50000$",
+            "year": 2020,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Toyota",
+            "model": "RAV4",
+            "type": "crossover",
+            "color": "gray",
+            "price": "15000$",
+            "year": 2015,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Hyundai",
+            "model": "Grand i10 Nios",
+            "type": "hatchback",
+            "color": "yellow",
+            "price": "30000$",
+            "year": 2018,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        },
+        {
+            "brand": "Honda",
+            "model": "Civic",
+            "type": "sedan",
+            "color": "blue",
+            "price": "25000$",
+            "year": 2010,
+            "seats": 2,
+            "category": "car",
+            "image": "test"
+        }
+    ]
+}

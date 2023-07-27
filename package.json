@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "mdc": "ng g @angular/material:mdc-migration"
   },
   "private": true,
   "dependencies": {
