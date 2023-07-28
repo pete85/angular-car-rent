@@ -1,6 +1,16 @@
+@use '@angular/material' as mat;
 @import "variables";
+@import 'mixins';
+@import 'theme_main';
 @import "animations";
 @import "base";
+@import "main";
+@import 'navigation';
+@import "tables";
+@import 'buttons';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: 'Montserrat', Helvetica Neue, sans-serif;
+}

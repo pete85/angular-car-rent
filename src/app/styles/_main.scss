@@ -1,0 +1,441 @@
+@import "variables";
+@import "mixins";
+@import "animations";
+
+
+.formContainer, #main-body {
+  position: relative;
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include background-opacity(map-get($appColours, 'grey'), 0.8);
+    z-index: 1000;
+  }
+}
+
+/**********************************************/
+/**************** PAGE LAYOUT *****************/
+/**********************************************/
+
+.mat-drawer-container {
+  width: 100%;
+  height: 100vh;
+
+  .mat-toolbar {
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000;
+    line-height: 16px !important;
+    background: transparent;
+    color: map-get($appColours, 'white');
+    height: 60px;
+
+    img {
+      max-height: 100%;
+      width: 40px;
+    }
+  }
+
+  #main-body {
+    position: absolute;
+    //top: 64px;
+    background: map-get($appColours, 'lightGrey');
+    bottom: 0;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+
+    .page-container {
+      position: absolute;
+      top: 60px;
+      z-index: 1000;
+      height: calc(100vh - 60px);
+      width: 100vw;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/**********************************************/
+/************** PAGE LAYOUT END ***************/
+/**********************************************/
+
+/***************************************************/
+/**************** VIDEO BACKGROUND *****************/
+/***************************************************/
+
+#myVideo {
+  position: fixed;
+  z-index: 999;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/***************************************************/
+/************** VIDEO BACKGROUND END ***************/
+/***************************************************/
+
+app-staff-schedule, app-spaces-schedule {
+  height: 100%;
+
+  .mat-mdc-card {
+    min-height: 500px;
+  }
+}
+
+.overflow-auto {
+  overflow: auto !important;
+}
+
+.notification-success {
+  background-color: map-get($appColours, 'success');
+  color: map-get($appColours, 'primary');
+}
+
+.notification-warning {
+  background-color: map-get($appColours, 'warning');
+  color: map-get($appColours, 'primary');
+}
+
+.notification-error {
+  background-color: map-get($appColours, 'alert');
+  color: map-get($appColours, 'primary');
+}
+
+.notification-info {
+  background-color: map-get($appColours, 'navy');
+  color: map-get($appColours, 'white');
+}
+
+.btn-submit {
+  background-color: map-get($appColours, 'primary');
+  color: map-get($appColours, 'white');
+
+  &:hover {
+    background-color: lighten(map-get($appColours, 'primary'), 15%);
+  }
+}
+
+.btn-cancel {
+  background-color: lighten(map-get($appColours, 'primary'), 70%);
+
+  &:hover {
+    background-color: lighten(map-get($appColours, 'primary'), 85%);
+  }
+}
+
+
+.mat-grid-tile {
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+
+  .mat-grid-tile-content {
+    padding: 20px;
+  }
+}
+
+.body-card {
+  min-height: 400px;
+  max-height: calc(100vh - 160px) !important;
+}
+
+.formContainer, #main-body {
+  position: relative;
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include background-opacity(map-get($appColours, 'grey'), 0.8);
+    z-index: 1000;
+  }
+}
+
+.nav-list-item:not(.active-menu-item) {
+  transition: 0.5s;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: inherit;
+    width: 7px;
+    background: map-get($appColours, 'secondary');
+    transform: scaleX(0);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+  }
+
+  &:hover {
+    color: map-get($appColours, 'primary');
+
+    .mat-icon {
+      color: map-get($appColours, 'primary') !important;
+    }
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: top;
+  }
+}
+
+app-staff-schedule, app-spaces-schedule {
+  height: 100%;
+
+  .mat-mdc-card {
+    min-height: 500px;
+  }
+}
+
+.absolute-container {
+  position: absolute;
+  color: map-get($appColours, 'white');
+  left: 50px;
+  right: 50px;
+  top: 50px;
+  bottom: 50px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/************************************************/
+/**************** APP PRELOADER *****************/
+/************************************************/
+
+app-pre-loader {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  @include bg-opacity(map-get($appColours, 'lightGrey'), 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+/************************************************/
+/************** APP PRELOADER END ***************/
+/************************************************/
+
+/***********************************************/
+/******************* SKILLS ********************/
+/***********************************************/
+
+#skillsContainer {
+  .skill {
+    color: map-get($appColours, 'white');
+    padding: 20px;
+    text-align: center;
+    position: relative;
+
+    img {
+      width: 100px;
+      cursor: pointer;
+      transition: all 300ms ease-in-out;
+
+      &:hover {
+        opacity: 0.6;
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+.skill-description {
+  border-top: 5px solid map-get($appColours, 'lime');
+  border-bottom: 5px solid map-get($appColours, 'lime');
+  min-height: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+
+  div {
+    padding: 20px 10px;
+    height: 100%;
+    word-wrap: break-word;
+  }
+}
+
+.skill-actions {
+  button {
+    //margin: 0 !important;
+    //width: 120px;
+  }
+}
+
+/***********************************************/
+/***************** SKILLS END ******************/
+/***********************************************/
+
+app-skills {
+  width: 100%;
+  height: 100%;
+}
+
+.validation-message {
+  @include bg-opacity(map-get($appColours, 'danger'), 0.2);
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+#header {
+  h2 {
+    margin: 0 !important;
+    font: 2rem/1.5rem 'Bebas Neue', Helvetica Neue, sans-serif;
+  }
+}
+
+/***********************************************/
+/******************** GRID *********************/
+/***********************************************/
+
+.mat-grid-tile {
+  color: map-get($appColours, 'white');
+  @include bg-opacity(map-get($appColours, 'black'), 0.5);
+}
+
+.action-tile {
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+
+  &:hover {
+    @include bg-opacity(map-get($appColours, 'lightGrey'), 0.5);
+  }
+}
+
+/***********************************************/
+/****************** GRID END *******************/
+/***********************************************/
+
+.pete85-intro {
+  background-color: rgba(map-get($appColours, 'primary'), 0.9);
+  @include box-shadow(5px, 5px, 20px, map-get($appColours, 'grey'));
+  border-radius: 3px;
+}
+
+.contact-card {
+  img {
+    width: 50%;
+    cursor: pointer;
+    transition: 300ms all ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
+      //animation: bounce 1s infinite;
+    }
+  }
+
+  .contact-card-content {
+    padding: 100px 30px;
+    background-color: rgba(map-get($appColours, 'white'), 0.8);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 300ms all ease-in-out;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(0.8, 0.8);
+  }
+}
+
+#home_content, #home_content_mobile {
+  .logo_picture {
+    width: 250px;
+    max-width: 95%;
+    margin-bottom: 20px;
+    @include animation-delay(0.5s);
+  }
+
+  .logo_text {
+    width: 150px;
+    max-width: 60%;
+    margin-bottom: 10px;
+    @include animation-delay(1s);
+  }
+
+  .logo_slogan {
+    margin: 10px;
+
+    h3 {
+      font: 3rem/3rem 'Cookie', cursive;
+      font-weight: 600;
+      color: map-get($appColours, 'primary');
+      text-shadow: 1px 0 map-get($appColours, 'white'),
+      0 -1px map-get($appColours, 'white'),
+      -1px 0 map-get($appColours, 'white'),
+      0 1px map-get($appColours, 'white');
+    }
+  }
+}
+
+#health-container {
+  img {
+    width: 90%;
+    cursor: pointer;
+    transition: 300ms all ease-in-out;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+.about-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  overflow: visible;
+  z-index: 1;
+
+  ::before {
+    content: '';
+    background: #A92222;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    transform-origin: left top;
+    transform: skewY(5deg);
+  }
+
+  ::after {
+    content: '';
+    background: #181818;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    //background: inherit;
+    z-index: -1;
+    top: 0;
+    //transform-origin: right top;
+    //transform: skewY(10deg);
+    bottom: 0;
+    transform-origin: right bottom;
+    transform: skewY(-5deg);
+  }
+  .about-content-1 {
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 1.5;
+  }
+}

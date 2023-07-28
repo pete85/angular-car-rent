@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Template",
+            "outputPath": "dist/VehicleHire",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Template:build:production"
+              "browserTarget": "VehicleHire:build:production"
             },
             "development": {
-              "browserTarget": "Template:build:development"
+              "browserTarget": "VehicleHire:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Template:build"
+            "browserTarget": "VehicleHire:build"
           }
         },
         "test": {

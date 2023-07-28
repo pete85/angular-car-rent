@@ -3,7 +3,10 @@ import {NgModule} from '@angular/core';
 import {VehiclesComponent} from "./components/vehicles/vehicles.component";
 
 const routes: Routes = [
-    {path: '', redirectTo: '/', pathMatch: 'prefix'}
+    {
+        path: '',
+        component: VehiclesComponent
+    }
 ];
 
 @NgModule({

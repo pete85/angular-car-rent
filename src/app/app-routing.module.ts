@@ -17,13 +17,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/bookings/bookings.module').then(m => m.BookingsModule),
     canActivate: []
   },
-
   {
     path: 'vehicles',
     title: 'vehicles',
     data: {title: 'vehicles'},
-    loadChildren: () => import('./modules/health/health.module').then(m => m.HealthModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./modules/vehicles/vehicles.module').then(m => m.VehiclesModule),
+    canActivate: []
   },
   {path: '**', component: PageNotFoundComponent}
 ];

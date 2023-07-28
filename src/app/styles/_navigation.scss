@@ -1,0 +1,114 @@
+@import 'variables';
+@import 'mixins';
+
+#navMenu {
+  button, .navElement {
+    color: map-get($appColours, 'white');
+    height: 56px;
+    .mat-icon {
+      height: 2rem;
+      width: 2rem;
+      font-size: 2rem;
+    }
+  }
+  .navElement {
+    width: 250px;
+    max-width: 80vw;
+  }
+}
+
+.mainNavigation {
+  .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+
+  .mat-expansion-panel-spacing {
+    margin: 0 !important;
+  }
+
+  .mat-expansion-panel:last-of-type {
+    border-radius: unset !important;
+  }
+
+  h3 {
+    margin: 0 !important;
+    font: 1.5rem/1.5rem 'Bebas Neue', Helvetica Neue, sans-serif;
+  }
+
+  .homeLink {
+    height: 56px;
+    padding: 10px 10px 10px 30px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      background-color: map-get($appColours, 'lightGrey');
+    }
+  }
+}
+
+.mat-drawer {
+  @include background-opacity(map-get($appColours, 'black'), 0.3);
+  color: map-get($appColours, 'white');
+}
+
+.nav-list-item:not(.active-menu-item) {
+  transition: 0.5s;
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: inherit;
+    width: 7px;
+    background: map-get($appColours, 'secondary');
+    transform: scaleX(0);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+  }
+  &:hover {
+    color: map-get($appColours, 'white');
+    .mat-icon {
+      color: map-get($appColours, 'white') !important;
+    }
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: top;
+  }
+}
+
+.active-menu-item {
+  color: map-get($appColours, 'white');
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 56px;
+    width: 7px;
+    background: map-get($appColours, 'secondary');
+    transform: scaleX(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+  }
+  .mat-icon, .nav-list-item-title, .mat-expansion-indicator::after  {
+    color: map-get($appColours, 'white');
+  }
+  .mat-expansion-indicator::after {
+    color: map-get($appColours, 'primary');
+  }
+}
+
+.mat-mdc-menu-panel {
+  min-height: 48px !important;
+  .mat-mdc-menu-content:not(:empty) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+//.mat-drawer-opened {
+//  width: 400px;
+//}

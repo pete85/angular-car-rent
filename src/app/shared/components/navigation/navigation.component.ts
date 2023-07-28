@@ -107,7 +107,6 @@ export class NavigationComponent implements OnInit, OnChanges, OnDestroy {
                 }
             });
         }
-        // this.toggleMenuView(openFullMenu);
         this.menuClosed.emit(true);
     }
 

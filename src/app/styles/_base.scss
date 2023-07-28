@@ -1,7 +1,26 @@
-@import "variables";
+@import 'variables';
+@import 'mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+  outline: 0 !important;
+}
 
 html {
-  font-size: 14px;
+  // overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  font-size: 15px;
+  font-family: 'Montserrat', Helvetica Neue, sans-serif !important;
 }
 
 body {
@@ -12,28 +31,28 @@ body {
                        TEXT
 *****************************************************/
 
-* {
-  font-family: 'Montserrat', Helvetica Neue, sans-serif;
-}
-
 h1 {
-  font: 700 2.4rem/2.8rem 'Montserrat', Helvetica Neue, sans-serif;
+  font: 3rem/3rem 'Bebas Neue', Helvetica Neue, sans-serif;
 }
 
 h2 {
-  font: 700 2rem/2.4rem 'Montserrat', Helvetica Neue, sans-serif;
+  font: 2rem/2rem 'Bebas Neue', Helvetica Neue, sans-serif;
 }
 
 h3 {
-  font: 700 1.6rem/2rem 'Montserrat', Helvetica Neue, sans-serif;
+  font: 1.5rem/1.5rem 'Bebas Neue', Helvetica Neue, sans-serif;
 }
 
 h4 {
-  font: 700 1.2rem/1.8rem 'Montserrat', Helvetica Neue, sans-serif;
+  font: 600 1rem/1.2rem 'Montserrat', Helvetica Neue, sans-serif;
 }
 
 p {
-  font: 400 1rem/1.6rem 'Montserrat', Helvetica Neue, sans-serif;
+  font: 400 1rem/1.2rem 'Montserrat', Helvetica Neue, sans-serif;
+  margin: 0;
+}
+
+h1, h2, h3, h4, p {
   margin: 0 !important;
 }
 
@@ -70,7 +89,82 @@ p {
 }
 
 .txtCenter {
-  text-align: center;
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.txtEnd {
+  text-align: right !important;
+  justify-content: flex-end !important;
+}
+
+.txtStart {
+  text-align: start;
+}
+
+.txtAlert {
+  color: map-get($appColours, 'alert');
+}
+
+.txtSuccess {
+  color: map-get($appColours, 'success');
+}
+
+.fontSizeXS {
+  font-size: 0.6rem !important;
+}
+
+.fontSizeS {
+  font-size: 0.85rem !important;
+}
+
+.fontSizeSM {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+.fontSizeM {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
+.fontSizeL {
+  font-size: 2rem !important;
+  line-height: 2.5rem !important;
+}
+
+.fontSizeXL {
+  font-size: 2.5rem !important;
+  line-height: 3rem !important;
+}
+
+.fontSizeXXL {
+  font-size: 3.5rem !important;
+  line-height: 4rem !important;
+}
+
+.fontSize2XL {
+  font-size: 4rem !important;
+  line-height: 5rem !important;
+}
+
+.fontSize4XL {
+  font-size: 8rem !important;
+  line-height: 9rem !important;
+}
+
+.fontSize6XL {
+  font-size: 10rem !important;
+  line-height: 11rem !important;
+}
+
+.fontSize8XL {
+  font-size: 16rem !important;
+  line-height: 17rem !important;
+}
+
+.txtWhite {
+  color: map-get($appColours, 'white') !important;
 }
 
 /*****************************************************
@@ -78,7 +172,36 @@ p {
 *****************************************************/
 
 /*****************************************************
-                    MARGINS
+                       ICONS
+*****************************************************/
+
+.icon-2x {
+  transform: scale(2);
+}
+
+.icon-3x {
+  transform: scale(3);
+}
+
+.icon-4x {
+  transform: scale(4);
+}
+
+.icon-line-height-1 {
+  line-height: 1rem;
+}
+
+.link-item {
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+/*****************************************************
+                     ICONS END
+*****************************************************/
+
+/*****************************************************
+                      MARGINS
 *****************************************************/
 
 /*ALL*/
@@ -158,32 +281,50 @@ p {
 }
 
 /*TOP BOTTOM*/
+
+.margin-tb-2 {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.margin-tb-3 {
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+}
+
 .margin-tb-5 {
-  margin: 5px 0 !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
 }
 
 .margin-tb-10 {
-  margin: 10px 0 !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
 }
 
 .margin-tb-15 {
-  margin: 15px 0 !important;
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
 }
 
 .margin-tb-20 {
-  margin: 20px 0 !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
 }
 
 .margin-tb-30 {
-  margin: 30px 0 !important;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .margin-tb-40 {
-  margin: 40px 0 !important;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .margin-tb-50 {
-  margin: 50px 0 !important;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .margin-b-5 {
@@ -220,39 +361,48 @@ p {
 
 /*LEFT RIGHT*/
 .margin-lr-5 {
-  margin: 0 5px !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
 }
 
 .margin-lr-8 {
-  margin: 0 8px !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
 }
 
 .margin-lr-16 {
-  margin: 0 16px !important;
+  margin-left: 16px !important;
+  margin-right: 16px !important;
 }
 
 .margin-lr-24 {
-  margin: 0 24px !important;
+  margin-left: 24px !important;
+  margin-right: 24px !important;
 }
 
 .margin-lr-10 {
-  margin: 0 10px !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
 }
 
 .margin-lr-20 {
-  margin: 0 20px !important;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
 }
 
 .margin-lr-30 {
-  margin: 0 30px !important;
+  margin-left: 30px !important;
+  margin-right: 30px !important;
 }
 
 .margin-lr-40 {
-  margin: 0 40px !important;
+  margin-left: 40px !important;
+  margin-right: 40px !important;
 }
 
 .margin-lr-80 {
-  margin: 0 50px !important;
+  margin-left: 80px !important;
+  margin-right: 80px !important;
 }
 
 .margin-l-5 {
@@ -269,6 +419,10 @@ p {
 
 .margin-l-20 {
   margin-left: 20px !important;
+}
+
+.margin-l-24 {
+  margin-left: 24px !important;
 }
 
 .margin-l-60 {
@@ -291,10 +445,8 @@ p {
   margin-right: 20px !important;
 }
 
-/*MENU-ALIGNMENT-WRAPPER*/
-.content-body-wrapper{
-  margin-left: 3%;
-  margin-right: 3%;
+.marginCenter {
+  margin: 0 auto !important;
 }
 
 /*****************************************************
@@ -309,6 +461,14 @@ p {
 
 .padding0 {
   padding: 0 !important;
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  .mat-button-wrapper {
+    padding: 0 !important;
+  }
+}
+
+.padding2 {
+  padding: 2px !important;
 }
 
 .padding5 {
@@ -341,7 +501,8 @@ p {
 
 /*TOP BOTTOM*/
 .padding-tb-5 {
-  padding: 5px 0 !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
 
 .padding-tb-10 {
@@ -477,22 +638,34 @@ p {
   padding-left: 0 !important;
 }
 
-.padding-l-10 {
-  padding-left: 10px !important;
+.padding-l-5 {
+  padding-left: 5px !important;
 }
 
-.padding-l-20 {
-  padding-left: 20px !important;
+.padding-l-10 {
+  padding-left: 10px !important;
 }
 
 .padding-l-15 {
   padding-left: 15px !important;
 }
 
+.padding-l-20 {
+  padding-left: 20px !important;
+}
+
+.padding-l-25 {
+  padding-left: 25px !important;
+}
+
 /*** PADDING RIGHT ***/
 
 .padding-r-0 {
   padding-right: 0 !important;
+}
+
+.padding-r-5 {
+  padding-right: 5px !important;
 }
 
 .padding-r-10 {
@@ -512,73 +685,253 @@ p {
 *****************************************************/
 
 /*****************************************************
+                ABSOLUTE POSITIONING
+*****************************************************/
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.bottom-10 {
+  bottom: 10px;
+}
+
+.bottom-20 {
+  bottom: 20px;
+}
+
+.bottom-30 {
+  bottom: 30px;
+}
+
+.bottom-40 {
+  bottom: 40px;
+}
+
+.bottom-50 {
+  bottom: 50px;
+}
+
+.bottom-80 {
+  bottom: 80px;
+}
+
+/*****************************************************
+              ABSOLUTE POSITIONING END
+*****************************************************/
+
+/*****************************************************
                       BORDERS
 *****************************************************/
 
 .border-1px {
-  border: 1px solid $hoistGrey;
+  border: 1px solid map-get($appColours, 'grey') !important;
+}
+
+.border-fuchsia-1px {
+  border: 1px solid map-get($appColours, 'fuchsia') !important;
 }
 
 .border-2px {
-  border: 2px solid $hoistGrey;
+  border: 2px solid map-get($appColours, 'grey') !important;
 }
 
 .border-top-1px {
-  border-top: 1px solid $hoistGrey;
+  border-top: 1px solid map-get($appColours, 'grey') !important;
 }
 
 .border-right-1px {
-  border-right: 1px solid $hoistGrey;
+  border-right: 1px solid map-get($appColours, 'white') !important;
+}
+
+.border-right-white-1px {
+  border-right: 1px solid map-get($appColours, 'white') !important;
+}
+
+.border-right-light-grey-1px {
+  border-right: 1px solid map-get($appColours, 'lightGrey') !important;
 }
 
 .border-bottom-1px {
-  border-bottom: 1px solid $hoistGrey;
+  border-bottom: 1px solid map-get($appColours, 'grey') !important;
 }
 
-.border-bottom-1px-lightGrey {
-  border-bottom: 1px solid $hoistGreyLight;
-}
-
-.border-bottom-1px-white {
-  border-bottom: 1px solid $white;
+.border-bottom-white-1px {
+  border-bottom: 1px solid map-get($appColours, 'white') !important;
 }
 
 .border-left-1px {
-  border-left: 1px solid $hoistGrey;
+  border-left: 1px solid map-get($appColours, 'grey') !important;
 }
 
 .border-top-2px {
-  border-top: 2px solid $hoistGrey;
+  border-top: 2px solid map-get($appColours, 'grey') !important;
 }
 
 .border-right-2px {
-  border-right: 2px solid $hoistGrey;
+  border-right: 2px solid map-get($appColours, 'grey') !important;
 }
 
 .border-bottom-2px {
-  border-bottom: 2px solid $hoistGrey;
+  border-bottom: 2px solid map-get($appColours, 'grey') !important;
 }
 
 .border-left-2px {
-  border-left: 2px solid $hoistGrey;
+  border-left: 2px solid map-get($appColours, 'grey') !important;
+}
+
+.border-top-3px {
+  border-top: 3px solid map-get($appColours, 'grey') !important;
+}
+
+.border-right-3px {
+  border-right: 3px solid map-get($appColours, 'grey') !important;
+}
+
+.border-bottom-3px {
+  border-bottom: 3px solid map-get($appColours, 'grey') !important;
+}
+
+.border-left-3px {
+  border-left: 3px solid map-get($appColours, 'grey') !important;
+}
+
+
+.border-top-5px-fuchsia {
+  border-top: 5px solid map-get($appColours, 'fuchsia') !important;
+}
+
+.border-top-5px-lavender {
+  border-top: 5px solid map-get($appColours, 'lavender') !important;
+}
+
+.border-top-5px-jade {
+  border-top: 5px solid map-get($appColours, 'jade') !important;
+}
+
+.border-top-5px-lime {
+  border-top: 5px solid map-get($appColours, 'lime') !important;
+}
+
+.border-top-5px-navy {
+  border-top: 5px solid map-get($appColours, 'navy') !important;
+}
+
+
+.border-bottom-5px-fuchsia {
+  border-bottom: 5px solid map-get($appColours, 'fuchsia') !important;
+}
+
+.border-bottom-5px-lavender {
+  border-bottom: 5px solid map-get($appColours, 'lavender') !important;
+}
+
+.border-bottom-5px-jade {
+  border-bottom: 5px solid map-get($appColours, 'jade') !important;
+}
+
+.border-bottom-5px-lime {
+  border-bottom: 5px solid map-get($appColours, 'lime') !important;
+}
+
+.border-bottom-5px-navy {
+  border-bottom: 5px solid map-get($appColours, 'navy') !important;
+}
+
+
+
+.border-left-5px-fuchsia {
+  border-left: 5px solid map-get($appColours, 'fuchsia') !important;
+}
+
+.border-left-5px-lavender {
+  border-left: 5px solid map-get($appColours, 'lavender') !important;
+}
+
+.border-left-5px-jade {
+  border-left: 5px solid map-get($appColours, 'jade') !important;
+}
+
+.border-left-5px-lime {
+  border-left: 5px solid map-get($appColours, 'lime') !important;
+}
+
+.border-left-5px-navy {
+  border-left: 5px solid map-get($appColours, 'navy') !important;
+}
+
+
+
+
+.border-right-5px-fuchsia {
+  border-right: 5px solid map-get($appColours, 'fuchsia') !important;
+}
+
+.border-right-5px-lavender {
+  border-right: 5px solid map-get($appColours, 'lavender') !important;
+}
+
+.border-right-5px-jade {
+  border-right: 5px solid map-get($appColours, 'jade') !important;
+}
+
+.border-right-5px-lime {
+  border-right: 5px solid map-get($appColours, 'lime') !important;
+}
+
+.border-right-5px-navy {
+  border-right: 5px solid map-get($appColours, 'navy') !important;
+}
+
+
+
+.border-radius0 {
+  border-radius: 0 !important;
 }
 
 .border-radius-5px {
-  border-radius: 5px;
+  border-radius: 5px !important;
 }
 
 .border-radius-10px {
-  border-radius: 10px;
+  border-radius: 10px !important;
 }
 
 .border-radius-15px {
-  border-radius: 15px;
+  border-radius: 15px !important;
 }
 
 .border-radius-20px {
-  border-radius: 20px;
+  border-radius: 20px !important;
 }
 
+.border-bottom-10px {
+  border-bottom: 10px solid;
+}
+
+.border-radius-l-10 {
+  border-radius: 10px 0 0 10px;
+}
+
+.border-radius-r-10 {
+  border-radius: 0 10px 10px 0;
+}
+
+.border-radius-tl-10 {
+  border-radius: 10px 0 0 0;
+}
+
+.border-radius-tr-10 {
+  border-radius: 0 10px 0 0;
+}
+
+.border-radius-br-10 {
+  border-radius: 0 0 10px 0;
+}
+
+.border-radius-bl-10 {
+  border-radius: 0 0 0 10px;
+}
 /*****************************************************
                     BORDERS END
 *****************************************************/
@@ -587,28 +940,60 @@ p {
                       BACKGROUNDS
 *****************************************************/
 
-.bgGreyDark {
-  background-color: $hoistGreyDark !important;
+.bgWhite {
+  background: map-get($appColours, 'white') !important;
 }
 
-.bgGreyLight {
-  background-color: $hoistGreyLight !important;
+.bgPrimary {
+  background: map-get($appColours, 'primary') !important;
+}
+
+.bgGrey {
+  background-color: map-get($appColours, 'grey') !important;
+}
+
+.bgAlert {
+  background-color: map-get($appColours, 'alert') !important;
+}
+
+.bgAlertLight10 {
+  background-color: lighten(map-get($appColours, 'alert'), 10%) !important;
+}
+
+.bgAlertLight15 {
+  background-color: lighten(map-get($appColours, 'alert'), 15%) !important;
+}
+
+.bgAlertLight20 {
+  background-color: lighten(map-get($appColours, 'alert'), 20%) !important;
+}
+
+.bgAlertLight30 {
+  background-color: lighten(map-get($appColours, 'alert'), 30%) !important;
+}
+
+.bgLightGrey {
+  background-color: map-get($appColours, 'lightGrey') !important;
 }
 
 .bgGreen {
-  background-color: map-get($theme-colors, 'success') !important;
+  background-color: map-get($appColours, 'success') !important;
 }
 
-.bgRed {
-  background-color: map-get($theme-colors, 'danger') !important;
+.bgNavy {
+  background-color: map-get($appColours, 'navy') !important;
 }
 
-.bgBlue {
-  background-color: map-get($theme-colors, 'lightBlue') !important;
+.bgJade {
+  background-color: map-get($appColours, 'jade') !important;
 }
 
-.bgBlue {
-  background-color: map-get($theme-colors, 'lightBlue') !important;
+.bgLavender {
+  background-color: map-get($appColours, 'lavender') !important;
+}
+
+.bgFuchsia {
+  background-color: map-get($appColours, 'fuchsia') !important;
 }
 
 /*****************************************************
@@ -616,35 +1001,137 @@ p {
 *****************************************************/
 
 /*****************************************************
-                        BUTTONS
+                        COLORS
 *****************************************************/
 
-.btnFixedBottomRight {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
+.colorWhite {
+  color: map-get($appColours, 'white') !important;
 }
 
-.btnFixedBottomLeft {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
+.colorPrimary {
+  color: map-get($appColours, 'primary') !important;
 }
 
-.btnFixedTopRight {
-  position: fixed;
-  top: 30px;
-  right: 30px;
+.colorGrey {
+  color: map-get($appColours, 'grey') !important;
 }
 
-.btnFixedTopLeft {
-  position: fixed;
-  top: 30px;
-  left: 30px;
+.colorAlert {
+  color: map-get($appColours, 'alert') !important;
+}
+
+.colorAlertLight10 {
+  color: lighten(map-get($appColours, 'alert'), 10%) !important;
+}
+
+.colorAlertLight15 {
+  color: lighten(map-get($appColours, 'alert'), 15%) !important;
+}
+
+.colorAlertLight20 {
+  color: lighten(map-get($appColours, 'alert'), 20%) !important;
+}
+
+.colorAlertLight30 {
+  color: lighten(map-get($appColours, 'alert'), 30%) !important;
+}
+
+.colorLightGrey {
+  color: map-get($appColours, 'lightGrey') !important;
+}
+
+.colorGreen {
+  color: map-get($appColours, 'success') !important;
+}
+
+.colorNavy {
+  color: map-get($appColours, 'navy') !important;
+}
+
+.colorJade {
+  color: map-get($appColours, 'jade') !important;
+}
+
+.colorLavender {
+  color: map-get($appColours, 'lavender') !important;
+}
+
+.colorFuchsia {
+  color: map-get($appColours, 'fuchsia') !important;
 }
 
 /*****************************************************
-                    BUTTONS END
+                       COLORS END
+*****************************************************/
+
+/*****************************************************
+                       POSITION
+*****************************************************/
+
+.fixed-bottom-left {
+  position: fixed !important;
+  bottom: 20px;
+  left: 20px;
+}
+
+.fixed-bottom-right {
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.fixed-top-left {
+  position: fixed !important;
+  top: 20px;
+  left: 20px;
+}
+
+.fixed-top-right {
+  position: fixed !important;
+  top: 20px;
+  right: 20px;
+}
+
+.absolute-top-right {
+  position: absolute !important;
+  top: 0px;
+  right: 0px;
+}
+/*****************************************************
+                      POSITION END
+*****************************************************/
+
+/*****************************************************
+                        OPACITY
+*****************************************************/
+
+.opacity0 {
+  opacity: 0 !important;
+}
+
+.opacity20 {
+  opacity: 0.2 !important;
+}
+
+.opacity40 {
+  opacity: 0.4 !important;
+}
+
+.opacity60 {
+  opacity: 0.6 !important;
+}
+
+.opacity80 {
+  opacity: 0.8 !important;
+}
+
+.opacity100 {
+  opacity: 1 !important;
+}
+
+/*****************************************************
+                      OPACITY END
 *****************************************************/
 
 /*****************************************************
@@ -715,6 +1202,10 @@ p {
   width: 200px !important;
 }
 
+.w250px {
+  width: 250px !important;
+}
+
 .w300px {
   width: 300px !important;
 }
@@ -727,8 +1218,48 @@ p {
   width: 500px !important;
 }
 
+.w30 {
+  width: 30% !important;
+}
+
+.w40 {
+  width: 40% !important;
+}
+
+.w50 {
+  width: 50% !important;
+}
+
+.w60 {
+  width: 60% !important;
+}
+
+.w70 {
+  width: 70% !important;
+}
+
+.w80 {
+  width: 80% !important;
+}
+
+.w90 {
+  width: 90% !important;
+}
+
 .w100 {
   width: 100% !important;
+}
+
+.w100vw {
+  width: 100vw !important;
+}
+
+.min-w-50px {
+  min-width: 50px !important;
+}
+
+.h48px {
+  height: 48px;
 }
 
 .h50px {
@@ -763,6 +1294,10 @@ p {
   height: 140px;
 }
 
+.h150px {
+  height: 150px;
+}
+
 .h160px {
   height: 160px;
 }
@@ -775,60 +1310,190 @@ p {
   height: 200px;
 }
 
+.h250px {
+  height: 250px;
+}
+
+.h300px {
+  height: 300px;
+}
+
+.h350px {
+  height: 350px;
+}
+
+.h400px {
+  height: 400px;
+}
+
 .h100 {
   height: 100% !important;
+}
+
+.h100vh {
+  height: 100vh !important;
+}
+
+.span-w-50px {
+  display: inline-block;
+  width: 50px;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.span-w-100px {
+  display: inline-block;
+  width: 100px;
 }
 
 /*****************************************************
                    DIMENSIONS END
 *****************************************************/
 
-.dividerDiv {
-  height: 3px;
-  border-bottom: 1px solid $hoistGreyLight;
+/*****************************************************
+                       COLOURS
+*****************************************************/
+
+.colorPrimary {
+  color: map-get($appColours, 'primary');
+}
+
+.colorSecondary {
+  color: map-get($appColours, 'secondary');
+}
+
+.colorSuccess {
+  color: map-get($appColours, 'success');
+}
+
+.colorAlert {
+  color: map-get($appColours, 'alert');
+}
+
+.colorOrange {
+  color: map-get($appColours, 'orange');
+}
+
+.colorWarning {
+  color: map-get($appColours, 'warning');
+}
+
+.colorWhite {
+  color: map-get($appColours, 'white');
+}
+
+.colorNavy {
+  color: map-get($appColours, 'navy');
+}
+
+.colorJade {
+  color: map-get($appColours, 'jade');
+}
+
+.colorLavender {
+  color: map-get($appColours, 'lavender');
+}
+
+.colorFuchsia {
+  color: map-get($appColours, 'fuchsia') !important;
+}
+
+.colorLime {
+  color: map-get($appColours, 'lime') !important;
 }
 
 /*****************************************************
-              OCCUPANCY - FULL CALENDAR
+                     COLOURS END
 *****************************************************/
 
-.band-1, .band-2, .band-3, .band-4, .band-5 {
-  color: $white;
-  font-weight: 700;
-  text-align: center;
+.floatRight {
+  float: right;
 }
 
-.band-1 {
-  background-color: map-get($theme-colors, 'danger');
+app-page-not-found {
+  height: 100% !important;
 }
 
-.band-2 {
-  background-color: map-get($theme-colors, 'orange');
+.hidden {
+  display: none !important;
 }
 
-.band-3 {
-  background-color: map-get($theme-colors, 'warning');
+.codeSnippet {
+  color: map-get($appColours, 'white');
+  background: map-get($appColours, 'darkGrey');
+  padding: 10px;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 5px;
+  max-width: 95%;
+  overflow-y: auto;
 }
 
-.band-4 {
-  background-color: map-get($theme-colors, 'success');
-}
-
-.band-5 {
-  background-color: map-get($theme-colors, 'secondary');
-}
-
-.txtVertical {
-  div {
-    font-size: 1.3em;
-    font-weight: 600;
-    writing-mode: vertical-lr;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btnBackFixed {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 5px !important;
+  @include respond-above(sm) {
+    left: 70px !important;
   }
 }
 
+.blur5px {
+  filter: blur(5px);
+}
+
+.blur10px {
+  filter: blur(10px);
+}
+
+.contentContainer {
+  max-width: 1140px;
+}
+
+.positionRelative {
+  position: relative !important;
+}
+
 /*****************************************************
-            OCCUPANCY - FULL CALENDAR END
+                     BOX SHADOW START
+*****************************************************/
+
+.box-shadow-light {
+  box-shadow: 0 0 30px 8px map-get($appColours, 'grey');
+}
+
+/*****************************************************
+                     BOX SHADOW END
+*****************************************************/
+
+/*****************************************************
+                       TEXT
+*****************************************************/
+
+.animation-delay-0 {
+  animation-delay: 0;
+}
+
+.animation-delay-1 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2 {
+  animation-delay: 2s;
+}
+
+.animation-delay-3 {
+  animation-delay: 3s;
+}
+
+.animation-delay-4 {
+  animation-delay: 4s;
+}
+
+.animation-delay-5 {
+  animation-delay: 5s;
+}
+
+/*****************************************************
+                     TEXT END
 *****************************************************/

@@ -4,10 +4,9 @@ import {BookingsComponent} from "./components/bookings/bookings.component";
 
 const routes: Routes = [
     {
-        path: 'test',
+        path: '',
         component: BookingsComponent
     },
-    {path: '', redirectTo: '/', pathMatch: 'prefix'}
 ];
 
 @NgModule({

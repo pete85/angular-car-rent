@@ -19,10 +19,12 @@ export class AppComponent implements OnInit, OnDestroy {
     activeMenuItem: string;
     innerHeight: number;
     innerWidth: number;
+    isLoading: boolean;
     menu: MenuModel;
     sidenavMode: MatDrawerMode;
     subMenu$: Subscription;
     subUser$: Subscription;
+    subLoading$: Subscription;
     subscriptionList = new Subscription();
     title = 'Vehicle Hire';
 
@@ -43,6 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.getMenu();
+        this.getRequestStatus();
         this.getCurrentRoute();
     }
 
@@ -89,6 +92,22 @@ export class AppComponent implements OnInit, OnDestroy {
             () => {
                 this.subscriptionList.add(this.subMenu$);
             }
+        );
+    }
+
+    getRequestStatus() {
+        this.subLoading$ = this._commonService.loading$.subscribe(
+          response => {
+              setTimeout(() => {
+                  this.isLoading = response;
+              }, 200);
+          },
+          error => {
+              console.error(error);
+          },
+          () => {
+              this.subscriptionList.add(this.subLoading$);
+          }
         );
     }
 
