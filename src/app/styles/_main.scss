@@ -439,3 +439,19 @@ app-skills {
     line-height: 1.5;
   }
 }
+
+.mat-grid-tile {
+  cursor: pointer;
+  transition:all 300ms ease-in-out;
+  &:hover {
+    background: rgba(map-get($appColours, 'darkGrey'), 0.6) !important;
+  }
+  img {
+    width: 90%;
+    max-width: 90%;
+    transition:all 300ms ease-in-out;
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
+}

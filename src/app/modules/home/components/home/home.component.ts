@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Tile} from "../../../../shared/models/tile";
+import {appColours, appConfig} from "../../../../app.config";
 
 @Component({
   selector: 'app-home',
@@ -7,12 +9,27 @@ import {Router} from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  columns: number;
+  gridGutter: string;
   innerWidth: number;
   innerHeight: number;
+  rowHeight: string;
+  showOptions: boolean;
+
+  tiles: Tile[] = [
+    {title: 'Vehicles', cols: 2, rows: 2, color: appColours.darkGrey, linkUrl: '/vehicles'},
+    {title: 'Bookings', cols: 2, rows: 2, color: appColours.darkGrey, linkUrl: '/bookings'},
+    {title: 'Book Now', cols: 2, rows: 2, color: appColours.darkGrey, linkUrl: '/bookings/new'}
+  ];
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
+    this.columns = 6;
+    this.rowHeight = '120px';
+    this.gridGutter = '20px';
   }
 
   constructor(private _router: Router) {
@@ -20,5 +37,25 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setTiles(this.tiles);
+    setTimeout(() => {
+      this.showOptions = true;
+    }, 4000);
+  }
+
+  setTiles(tiles: Tile[]) {
+    if (this.innerWidth > 960) {
+      tiles[0].cols = 2;
+      tiles[1].cols = 2;
+      tiles[2].cols = 2;
+    } else if (this.innerWidth > 600 && this.innerWidth <= 960) {
+      tiles[0].cols = 3;
+      tiles[1].cols = 3;
+      tiles[2].cols = 3;
+    } else {
+      tiles.forEach(el => {
+        el.cols = 6
+      });
+    }
   }
 }
