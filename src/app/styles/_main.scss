@@ -466,9 +466,7 @@ app-skills {
 }
 
 .filters-container {
-  //height: 90px;
   z-index: 1000;
-  margin-bottom: 20px;
   .mdc-text-field {
     background: map-get($appColours, 'white');
   }
@@ -477,4 +475,18 @@ app-skills {
     padding: 5px;
     border-radius: 3px 3px 0 0;
   }
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  min-height: 46px !important;
+}
+
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+  top: 23px !important;
+}
+
+.mat-horizontal-content-container {
+  padding: 0 !important;
 }
