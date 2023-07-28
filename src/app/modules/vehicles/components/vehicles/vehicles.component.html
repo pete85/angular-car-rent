@@ -1,1 +1,42 @@
-<p>vehicles works!</p>
+<div fxLayout="column" fxFlex class="page-container">
+  <div fxLayout fxFlex="90px" fxLayoutAlign="center center" fxLayoutGap="10px"
+       class="animated2000 fadeInDown animation-delay-3 w100 padding20 filters-container" *ngIf="vehicles">
+    <div fxFlex fxFill>
+      <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+        <mat-label>Make</mat-label>
+        <input matInput id="make" [(ngModel)]="filters.make" (keyup)="getVehicles(filters)">
+      </mat-form-field>
+    </div>
+    <div fxFlex fxFill>
+      <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+        <mat-label>Model</mat-label>
+        <input matInput id="model" [(ngModel)]="filters.model" (keyup)="getVehicles(filters)">
+      </mat-form-field>
+    </div>
+    <div fxFlex fxFill>
+      <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+        <mat-label>Year From</mat-label>
+        <mat-select [(ngModel)]="yearFrom" (ngModelChange)="setYearFrom(yearFrom)">
+          <mat-option [value]="option" *ngFor="let option of yearOptions">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout fxFlex fxLayoutAlign="center center" class="animated2000 fadeInUp animation-delay-2 w100 padding20">
+    <mat-grid-list [cols]="columns" [rowHeight]="rowHeight" [gutterSize]="gridGutter" *ngIf="vehicles && tiles"
+                   class="w100">
+      <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+                     [style.background]="tile.color" [routerLink]="tile?.linkUrl">
+        <div fxLayout="column" fxFlex>
+          <div fxLayout="column" fxFlex fxLayoutAlign="center center">
+            <h2>{{tile?.vehicle?.make}}</h2>
+            <h4>{{tile?.vehicle?.model}} ({{tile?.vehicle?.date_produced | date : 'yyyy'}})</h4>
+          </div>
+          <div fxLayout fxFlex fxLayoutAlign="center center">
+            <img src="assets/images/{{tile?.image}}.png" alt="{{tile?.title}}">
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

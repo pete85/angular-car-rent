@@ -45,5 +45,6 @@ export const appColours = {
   lavender: '#9AAEF9',
   jade: '#8FD6E5',
   fuchsia: '#FF0096',
-  lime: '#64C20B'
+  lime: '#64C20B',
+  darkGreyRGBA: 'rgba(62, 69, 69, 0.6)'
 };

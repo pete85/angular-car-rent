@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
   showOptions: boolean;
 
   tiles: Tile[] = [
-    {title: 'Vehicles', cols: 2, rows: 2, color: appColours.darkGrey, linkUrl: '/vehicles'},
-    {title: 'Bookings', cols: 2, rows: 2, color: appColours.darkGrey, linkUrl: '/bookings'},
-    {title: 'Book Now', cols: 2, rows: 2, color: appColours.darkGrey, linkUrl: '/bookings/new'}
+    {title: 'Vehicles', cols: 2, rows: 2, color: appColours.darkGreyRGBA, linkUrl: '/vehicles', image: 'toyota-supra'},
+    {title: 'Bookings', cols: 2, rows: 2, color: appColours.darkGreyRGBA, linkUrl: '/bookings', image: 'bookings'},
+    {title: 'Book Now', cols: 2, rows: 2, color: appColours.darkGreyRGBA, linkUrl: '/bookings/new', image: 'carkey'}
   ];
 
   @HostListener('window:resize', ['$event'])

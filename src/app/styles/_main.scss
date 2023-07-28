@@ -444,7 +444,7 @@ app-skills {
   cursor: pointer;
   transition:all 300ms ease-in-out;
   &:hover {
-    background: rgba(map-get($appColours, 'darkGrey'), 0.6) !important;
+    background: map-get($appColours, 'primary') !important;
   }
   img {
     width: 90%;
@@ -453,5 +453,25 @@ app-skills {
     &:hover {
       transform: scale(0.9);
     }
+  }
+}
+
+#vehicles-container {
+  height: calc(100vh - 150px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.filters-container {
+  height: 90px;
+  z-index: 1000;
+  margin-bottom: 20px;
+  .mdc-text-field {
+    background: map-get($appColours, 'white');
+  }
+  .mdc-floating-label {
+    background: map-get($appColours, 'white');
+    padding: 5px;
+    border-radius: 3px 3px 0 0;
   }
 }

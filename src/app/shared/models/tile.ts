@@ -1,3 +1,5 @@
+import {Vehicle} from "./vehicle";
+
 export class Tile {
   border?: string;
   borderBottom?: string;
@@ -13,4 +15,5 @@ export class Tile {
   subTitle?: string;
   linkUrl?: string;
   image?: string;
+  vehicle?: Vehicle;
 }

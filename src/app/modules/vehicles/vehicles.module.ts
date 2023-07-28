@@ -3,6 +3,8 @@ import {CommonModule} from '@angular/common';
 import {VehiclesComponent} from './components/vehicles/vehicles.component';
 import {SharedModule} from "../../shared/shared.module";
 import {VehiclesRoutingModule} from "./vehicles-routing.module";
+import {FlexModule} from "@angular/flex-layout";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import {VehiclesRoutingModule} from "./vehicles-routing.module";
   imports: [
     CommonModule,
     SharedModule,
-    VehiclesRoutingModule
+    VehiclesRoutingModule,
+    FlexModule,
+    FormsModule
   ]
 })
 export class VehiclesModule {
