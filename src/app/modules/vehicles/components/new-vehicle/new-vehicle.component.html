@@ -1,0 +1,85 @@
+<div fxLayout="column" fxFlex *ngIf="data">
+  <div fxFlex fxLayoutAlign="space-between center" class="padding-b-10">
+    <div fxLayout fxFlex fxLayoutAlign="start center">
+      <h3 class="font600">{{data.name | capitalise}}</h3>
+    </div>
+    <div fxFlex="10" fxLayoutAlign="end center">
+      <button mat-icon-button mat-dialog-close="" aria-label="Close" class="close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div fxFlex fxLayoutAlign="space-between center" class="margin-t-20">
+    <mat-stepper linear #stepper animationDuration="2000" class="w100">
+      <mat-step [stepControl]="newVehicleForm1">
+        <form fxFlex fxLayout="column" fxLayoutAlign="space-evenly stretch" [formGroup]="newVehicleForm1"
+              id="new-vehicle-form-1" class="margin-t-15">
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Make</mat-label>
+            <input matInput formControlName="make" id="make">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Model</mat-label>
+            <input matInput formControlName="model" id="model">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Date produced</mat-label>
+            <input matInput id="date_produced" autocomplete="off" [matDatepicker]="picker"
+                   formControlName="date_produced"
+                   (click)="picker.open()" [min]="minDate" [max]="maxDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker mat-date-filter="0"></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Registration</mat-label>
+            <input matInput formControlName="reg" id="reg">
+          </mat-form-field>
+
+          <div>
+            <button mat-raised-button matStepperNext>Next</button>
+          </div>
+        </form>
+
+      </mat-step>
+
+      <mat-step [stepControl]="newVehicleForm2">
+        <form fxFlex fxLayout="column" fxLayoutAlign="space-evenly stretch" [formGroup]="newVehicleForm2"
+              id="new-vehicle-form-2" class="margin-t-15" (ngSubmit)="submitNewVehicle(data)">
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Type</mat-label>
+            <input matInput formControlName="type" id="type">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Category</mat-label>
+            <input matInput formControlName="category" id="category">
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Capacity</mat-label>
+            <input matInput formControlName="capacity" id="capacity" type="number">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Price per day</mat-label>
+            <input matInput formControlName="capacity" id="capacity" type="number">
+          </mat-form-field>
+
+          <div>
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="accent" type="submit">Add</button>
+          </div>
+        </form>
+      </mat-step>
+
+    </mat-stepper>
+  </div>
+
+</div>

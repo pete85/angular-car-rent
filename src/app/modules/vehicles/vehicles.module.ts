@@ -4,19 +4,22 @@ import {VehiclesComponent} from './components/vehicles/vehicles.component';
 import {SharedModule} from "../../shared/shared.module";
 import {VehiclesRoutingModule} from "./vehicles-routing.module";
 import {FlexModule} from "@angular/flex-layout";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { NewVehicleComponent } from './components/new-vehicle/new-vehicle.component';
 
 
 @NgModule({
   declarations: [
-    VehiclesComponent
+    VehiclesComponent,
+    NewVehicleComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     VehiclesRoutingModule,
     FlexModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class VehiclesModule {

@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
     this.columns = 6;
     this.rowHeight = '120px';
     this.gridGutter = '20px';
+    this.setTiles(this.tiles);
   }
 
   constructor(private _router: Router) {
@@ -37,7 +38,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setTiles(this.tiles);
     setTimeout(() => {
       this.showOptions = true;
     }, 4000);
@@ -45,13 +45,13 @@ export class HomeComponent implements OnInit {
 
   setTiles(tiles: Tile[]) {
     if (this.innerWidth > 960) {
-      tiles[0].cols = 2;
-      tiles[1].cols = 2;
-      tiles[2].cols = 2;
+      tiles.forEach(el => {
+        el.cols = 2
+      });
     } else if (this.innerWidth > 600 && this.innerWidth <= 960) {
-      tiles[0].cols = 3;
-      tiles[1].cols = 3;
-      tiles[2].cols = 3;
+      tiles.forEach(el => {
+        el.cols = 3
+      });
     } else {
       tiles.forEach(el => {
         el.cols = 6

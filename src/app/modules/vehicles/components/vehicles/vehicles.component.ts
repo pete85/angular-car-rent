@@ -5,6 +5,8 @@ import {Subscription} from "rxjs/internal/Subscription";
 import {Tile} from "../../../../shared/models/tile";
 import {appColours, appConfig} from "../../../../app.config";
 import {format, isEqual, parseISO} from 'date-fns';
+import {MatDialog} from "@angular/material/dialog";
+import {NewVehicleComponent} from "../new-vehicle/new-vehicle.component";
 
 @Component({
   selector: 'app-vehicles',
@@ -18,11 +20,11 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   innerHeight: number;
   filters: any = {};
   rowHeight: string;
+  subNewVehicleDialog$: Subscription;
   subVehicles$: Subscription;
   subscriptionList = new Subscription();
   tiles: Tile[];
   vehicles: Vehicle[];
-  yearFrom: string;
   yearOptions: string[];
 
   @HostListener('window:resize', ['$event'])
@@ -32,14 +34,34 @@ export class VehiclesComponent implements OnInit, OnDestroy {
     this.columns = 6;
     this.rowHeight = '120px';
     this.gridGutter = '20px';
+    if (this.vehicles) {
+      this.setTiles(this.tiles);
+    }
   }
-  constructor(private _bookingsService: BookingsService) {
+  constructor(private _bookingsService: BookingsService,
+              public dialog: MatDialog) {
     this.onResize();
   }
 
   ngOnInit() {
     this.yearOptions = this.setYearFromOptions();
     this.getVehicles(this.filters);
+  }
+
+  setTiles(tiles: Tile[]) {
+    if (this.innerWidth > 960) {
+      tiles.forEach(el => {
+        el.cols = 2
+      });
+    } else if (this.innerWidth > 600 && this.innerWidth <= 960) {
+      tiles.forEach(el => {
+        el.cols = 3
+      });
+    } else {
+      tiles.forEach(el => {
+        el.cols = 6
+      });
+    }
   }
 
   setYearFromOptions() {
@@ -51,25 +73,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
     for (let i = 0; i <= counter; i++) {
       yearsArray.push((yearStart + i).toString());
     }
-    // this.filters.yearFrom = yearsArray[0];
     return yearsArray;
-  }
-
-  setYearFrom(yearSelected) {
-    console.log('Year selected: ', yearSelected);
-    this.filters.minyear = yearSelected;
-    console.log('Filters: ', this.filters);
-    this.getVehicles(this.filters);
-  }
-
-  displayFn(person): string {
-    return person && (person.firstname || person.lastName) ? (person.firstName).concat(' ', person.lastName) : 'All';
-  }
-
-  private _filterByMake(make): Vehicle[] {
-    return this.vehicles.filter(
-      (option) => (option.make == make.make)
-    );
   }
 
   getVehicles(filters) {
@@ -78,7 +82,6 @@ export class VehiclesComponent implements OnInit, OnDestroy {
       response => {
         if (response) {
           this.vehicles = response;
-          console.log('Response: ', response);
           response.forEach(el => {
             this.tiles.push({
               title: el.make,
@@ -86,10 +89,18 @@ export class VehiclesComponent implements OnInit, OnDestroy {
               cols: this.innerWidth > 960 ? 2 : this.innerWidth > 600 ? 3 : 6,
               rows: 2,
               color: appColours.darkGreyRGBA,
-              linkUrl: '/vehicles',
               image: el.picture,
               vehicle: el
             });
+          });
+
+          this.tiles.push({
+            title: 'Add new',
+            subTitle: 'vehicle',
+            cols: this.innerWidth > 960 ? 2 : this.innerWidth > 600 ? 3 : 6,
+            rows: 2,
+            color: appColours.darkGreyRGBA,
+            image: '',
           });
         }
       },
@@ -100,6 +111,30 @@ export class VehiclesComponent implements OnInit, OnDestroy {
         this.subscriptionList.add(this.subVehicles$);
       }
     );
+  }
+
+  openNewVehicleDialog() {
+    const dialogRef = this.dialog.open(NewVehicleComponent, {
+      width: '600px',
+      maxWidth: '100%',
+      data: {
+        name: 'New vehicle'
+      }
+    });
+    this.subNewVehicleDialog$ = dialogRef.afterClosed().subscribe(
+      response => {
+        if (response) {
+          console.log('Dialog res: ', response);
+          this.getVehicles(this.filters);
+        }
+      },
+      error => {
+        console.error(error);
+      },
+      () => {
+        this.subscriptionList.add(this.subNewVehicleDialog$);
+      }
+    )
   }
   ngOnDestroy() {
     this.subscriptionList.unsubscribe();
