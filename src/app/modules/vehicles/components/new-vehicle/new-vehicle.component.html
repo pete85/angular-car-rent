@@ -53,7 +53,7 @@
 
           <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
             <mat-label>Type</mat-label>
-            <mat-select formControlName="type" id="type" (change)="setVehicleCategories(formControl2.type.value)">
+            <mat-select formControlName="type" id="type">
               <mat-option *ngFor="let type of vehicleTypes" [value]="type">
                 {{type | capitalise}}
               </mat-option>
@@ -87,7 +87,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
-            <mat-label>Capacity</mat-label>
+            <mat-label>Seats</mat-label>
             <input matInput formControlName="capacity" id="capacity" type="number">
           </mat-form-field>
 

@@ -17,7 +17,6 @@ export class BookingsService {
   }
 
   getVehicles(queryParams): Observable<Vehicle[]> {
-
     let params = new HttpParams();
 
     if (queryParams.make) {
@@ -34,6 +33,18 @@ export class BookingsService {
 
     return this._http.get<Vehicle[]>(
       `${this.baseUrl}/vehicles`, {headers: this.headers, params: params}
+    )
+  }
+
+  addVehicle(payload: Vehicle): Observable<Vehicle> {
+    return this._http.post<Vehicle>(
+      `${this.baseUrl}/vehicles`, payload, {headers: this.headers}
+    )
+  }
+
+  removeVehicle(vehicle_id: string): Observable<Vehicle> {
+    return this._http.delete<Vehicle>(
+      `${this.baseUrl}/vehicles/${vehicle_id}`, {headers: this.headers}
     )
   }
 }

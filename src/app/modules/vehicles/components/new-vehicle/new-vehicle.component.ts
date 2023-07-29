@@ -5,6 +5,8 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {BookingsService} from "../../../../shared/services/bookings/bookings.service";
 import {Vehicle, VehicleCategory, VehicleType} from "../../../../shared/models/vehicle";
 import {CurrencyPipe} from "@angular/common";
+import {Subscription} from "rxjs/internal/Subscription";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-new-vehicle',
@@ -18,7 +20,8 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
   newVehicleForm1: UntypedFormGroup;
   newVehicleForm2: UntypedFormGroup;
   newVehicleForm3: UntypedFormGroup;
-  vehicle: Vehicle;
+  subNewVehicle$: Subscription;
+  subscriptionList = new Subscription();
   vehicleCategories: VehicleCategory[];
   vehicleTypes: VehicleType[];
   constructor(public dialogRef: MatDialogRef<NewVehicleComponent>,
@@ -30,7 +33,7 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.setVehicleTypes();
-    this.setVehicleCategories('car');
+    this.setVehicleCategories();
     this.buildForm();
   }
 
@@ -41,7 +44,7 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
     }
   }
 
-  setVehicleCategories(type: string) {
+  setVehicleCategories() {
     this.vehicleCategories = [];
     for (let item of Object.values(VehicleCategory)) {
       this.vehicleCategories.push(item);
@@ -51,8 +54,8 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
   buildForm() {
     this.newVehicleForm1 = this._formBuilder.group(
       {
-        make: [{value: 'aa', disabled: false}, [Validators.required]],
-        model: [{value: 'aa', disabled: false}, [Validators.required]],
+        make: [{value: '', disabled: false}, [Validators.required]],
+        model: [{value: '', disabled: false}, [Validators.required]],
         date_produced: [{value: new Date(), disabled: false}, [Validators.required]]
       }
     );
@@ -60,7 +63,7 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
     this.newVehicleForm2 = this._formBuilder.group(
       {
         reg: [{value: '', disabled: false}, [Validators.required]],
-        type: [{value: 'car', disabled: false}, [Validators.required]],
+        type: [{value: VehicleType.CAR, disabled: false}, [Validators.required]],
         category: [{value: VehicleCategory.OTHER, disabled: false}, [Validators.required]],
       }
     );
@@ -87,7 +90,7 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
   }
 
   submitNewVehicle() {
-    this.vehicle = {
+    const payload = {
       make: this.formControl1.make.value,
       model: this.formControl1.model.value,
       date_produced: this.formControl1.date_produced.value,
@@ -96,11 +99,28 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
       category: this.formControl2.category.value,
       capacity: this.formControl3.capacity.value,
       color: this.formControl3.color.value,
-      day_price: this.formControl3.day_price.value,
+      day_price: Number(this.formControl3.day_price.value.replace(/[^0-9.-]+/g,"")),
       picture: 'default'
     }
-    console.log('vehicle: ', this.vehicle);
+    this.subNewVehicle$ = this._bookingsService.addVehicle(payload).subscribe(
+      response => {
+        if (response) {
+          this.closeDialog(response);
+        }
+      },
+      error => {
+        console.error(error);
+      },
+      () => {
+        this.subscriptionList.add(this.subNewVehicle$);
+      }
+    )
+  }
+
+  closeDialog(data): void {
+    this.dialogRef.close(data);
   }
   ngOnDestroy() {
+    this.subscriptionList.unsubscribe();
   }
 }

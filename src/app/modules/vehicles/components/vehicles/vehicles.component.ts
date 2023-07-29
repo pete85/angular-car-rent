@@ -34,7 +34,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     this.columns = 6;
-    this.rowHeight = '120px';
+    this.rowHeight = '130px';
     this.gridGutter = '20px';
     if (this.vehicles) {
       this.setTiles(this.tiles);
@@ -130,8 +130,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
     this.subVehicle$ = dialogRef.afterClosed().subscribe(
       response => {
         if (response) {
-          console.log('Dialog res: ', response);
-          // this.getVehicles(this.filters);
+          this.getVehicles(this.filters);
         }
       },
       error => {
@@ -154,7 +153,6 @@ export class VehiclesComponent implements OnInit, OnDestroy {
     this.subNewVehicleDialog$ = dialogRef.afterClosed().subscribe(
       response => {
         if (response) {
-          console.log('Dialog res: ', response);
           this.getVehicles(this.filters);
         }
       },

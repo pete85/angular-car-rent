@@ -18,33 +18,38 @@
       </div>
       <mat-divider class="bgLightGrey margin-tb-5"></mat-divider>
       <div fxLayout="column" fxFlex class="w100">
-        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+        <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Reg</h3>
           <h3>{{vehicle?.reg}}</h3>
         </div>
-        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+        <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Colour</h3>
           <h3>{{vehicle?.color}}</h3>
         </div>
-        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+        <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Type</h3>
           <h3>{{vehicle?.type}}</h3>
         </div>
-        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+        <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Category</h3>
           <h3>{{vehicle?.category}}</h3>
         </div>
-        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+        <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Seats</h3>
           <h3>{{vehicle?.capacity}}</h3>
         </div>
-        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+        <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Wheels</h3>
           <h3>{{vehicle?.wheels}}</h3>
         </div>
-        <div fxLayout fxFlex fxLayoutAlign="space-between end">
+        <div fxLayout fxFlex="35px" fxLayoutAlign="space-between end">
           <h3>Price</h3>
           <h3>{{vehicle?.day_price | currency}} / day</h3>
+        </div>
+        <div fxLayout fxFlex fxLayoutAlign="space-between end">
+          <button mat-raised-button color="warn" class="margin-lr-0" (click)="removeVehicle(vehicle._id)">Remove
+          </button>
+          <button mat-raised-button color="primary" class="margin-lr-0">Book</button>
         </div>
       </div>
     </div>

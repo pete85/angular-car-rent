@@ -1,4 +1,5 @@
 export class Vehicle {
+  _id?: string;
   make: string;
   model: string;
   date_produced: Date;
