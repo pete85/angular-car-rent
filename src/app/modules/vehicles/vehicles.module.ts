@@ -6,12 +6,14 @@ import {VehiclesRoutingModule} from "./vehicles-routing.module";
 import {FlexModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NewVehicleComponent } from './components/new-vehicle/new-vehicle.component';
+import { VehicleComponent } from './components/vehicle/vehicle.component';
 
 
 @NgModule({
   declarations: [
     VehiclesComponent,
-    NewVehicleComponent
+    NewVehicleComponent,
+    VehicleComponent
   ],
   imports: [
     CommonModule,

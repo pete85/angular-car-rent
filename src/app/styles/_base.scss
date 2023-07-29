@@ -776,6 +776,10 @@ h1, h2, h3, h4, p {
   border-bottom: 2px solid map-get($appColours, 'grey') !important;
 }
 
+.border-bottom-2px-lightGrey {
+  border-bottom: 2px solid map-get($appColours, 'lightGrey') !important;
+}
+
 .border-left-2px {
   border-left: 2px solid map-get($appColours, 'grey') !important;
 }

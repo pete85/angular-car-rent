@@ -490,3 +490,24 @@ app-skills {
 .mat-horizontal-content-container {
   padding: 0 !important;
 }
+
+#vehicle-dialog.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: map-get($appColours, 'lightGrey');
+}
+
+.blurred-backdrop {
+  background-color: rgba(map-get($appColours, 'grey'), 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.close-white {
+  color: map-get($appColours, 'white') !important;
+}
+
+.mat-horizontal-stepper-header {
+  height: 50px;
+}
+
+.form-actions {
+  height: 60px;
+}

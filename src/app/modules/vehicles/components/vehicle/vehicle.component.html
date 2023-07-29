@@ -1,0 +1,52 @@
+<div fxLayout="column" fxFlex *ngIf="vehicle">
+  <div fxFlex fxLayoutAlign="end center" class="padding-b-10">
+    <div fxFlex="10" fxLayoutAlign="end center">
+      <button mat-icon-button mat-dialog-close="" aria-label="Close" class="close close-white">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div fxLayout fxFlex class="w100">
+    <div fxFlex="70" fxLayoutAlign="center center" *ngIf="innerWidth > 850">
+      <img src="../../../../../assets/images/{{vehicle?.picture}}.png" alt="{{vehicle?.make}}" class="w100">
+    </div>
+    <div fxLayout="column" fxFlex fxLayoutAlign="start start" class="txtWhite">
+      <div class="w100 border-bottom-2px-lightGrey">
+        <h1>{{vehicle?.make}} {{vehicle?.model}}</h1>
+        <h3>{{vehicle?.date_produced | date : 'yyyy'}}</h3>
+      </div>
+      <mat-divider class="bgLightGrey margin-tb-5"></mat-divider>
+      <div fxLayout="column" fxFlex class="w100">
+        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+          <h3>Reg</h3>
+          <h3>{{vehicle?.reg}}</h3>
+        </div>
+        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+          <h3>Colour</h3>
+          <h3>{{vehicle?.color}}</h3>
+        </div>
+        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+          <h3>Type</h3>
+          <h3>{{vehicle?.type}}</h3>
+        </div>
+        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+          <h3>Category</h3>
+          <h3>{{vehicle?.category}}</h3>
+        </div>
+        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+          <h3>Seats</h3>
+          <h3>{{vehicle?.capacity}}</h3>
+        </div>
+        <div fxLayout fxFlex="40px" fxLayoutAlign="space-between center">
+          <h3>Wheels</h3>
+          <h3>{{vehicle?.wheels}}</h3>
+        </div>
+        <div fxLayout fxFlex fxLayoutAlign="space-between end">
+          <h3>Price</h3>
+          <h3>{{vehicle?.day_price | currency}} / day</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

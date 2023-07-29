@@ -27,7 +27,7 @@
                    class="w100">
       <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
                      [style.background]="tile.color" [routerLink]="tile?.linkUrl">
-        <div fxLayout="column" fxFlex *ngIf="tile.vehicle">
+        <div fxLayout="column" fxFlex *ngIf="tile.vehicle" (click)="openVehicleDialog(tile.vehicle)">
           <div fxLayout="column" fxFlex fxLayoutAlign="center center">
             <h2>{{tile?.vehicle?.make}}</h2>
             <h4>{{tile?.vehicle?.model}} ({{tile?.vehicle?.date_produced | date : 'yyyy'}})</h4>
@@ -43,11 +43,11 @@
             <h4>{{tile?.subTitle}}</h4>
           </div>
           <div fxLayout fxFlex fxLayoutAlign="center center">
-            <img src="assets/images/default.png" alt="{{tile?.title}}">
+            <img src="assets/images/default.png" alt="{{tile?.title}}" class="imgNewVehicle">
           </div>
-          <div fxLayout fxFlex fxLayoutAlign="center center" class="padding10">
-            <h4>Click here</h4>
-          </div>
+<!--          <div fxLayout fxFlex fxLayoutAlign="center center" class="padding10">-->
+<!--            <h4>Click here</h4>-->
+<!--          </div>-->
         </div>
       </mat-grid-tile>
     </mat-grid-list>

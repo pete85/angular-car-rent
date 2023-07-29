@@ -6,6 +6,7 @@ import {NavigationComponent} from './components/navigation/navigation.component'
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {FlexModule} from "@angular/flex-layout";
+import {CurrencyPipe} from "@angular/common";
 
 @NgModule({
   imports: [
@@ -25,6 +26,9 @@ import {FlexModule} from "@angular/flex-layout";
     PageNotFoundComponent,
     CapitalisePipe,
     NavigationComponent
+  ],
+  providers: [
+    CurrencyPipe
   ]
 })
 

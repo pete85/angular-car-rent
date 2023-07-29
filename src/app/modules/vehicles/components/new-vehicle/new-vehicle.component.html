@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div fxFlex fxLayoutAlign="space-between center" class="margin-t-20">
+  <div fxFlex fxLayoutAlign="space-between center">
     <mat-stepper linear #stepper animationDuration="2000" class="w100">
       <mat-step [stepControl]="newVehicleForm1">
         <form fxFlex fxLayout="column" fxLayoutAlign="space-evenly stretch" [formGroup]="newVehicleForm1"
@@ -35,12 +35,7 @@
             <mat-datepicker #picker mat-date-filter="0"></mat-datepicker>
           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
-            <mat-label>Registration</mat-label>
-            <input matInput formControlName="reg" id="reg">
-          </mat-form-field>
-
-          <div>
+          <div fxLayout fxFlex="60px" fxLayoutAlign="space-between center">
             <button mat-raised-button matStepperNext>Next</button>
           </div>
         </form>
@@ -49,18 +44,47 @@
 
       <mat-step [stepControl]="newVehicleForm2">
         <form fxFlex fxLayout="column" fxLayoutAlign="space-evenly stretch" [formGroup]="newVehicleForm2"
-              id="new-vehicle-form-2" class="margin-t-15" (ngSubmit)="submitNewVehicle(data)">
+              id="new-vehicle-form-2" class="margin-t-15">
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Registration</mat-label>
+            <input matInput formControlName="reg" id="reg">
+          </mat-form-field>
 
           <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
             <mat-label>Type</mat-label>
-            <input matInput formControlName="type" id="type">
+            <mat-select formControlName="type" id="type" (change)="setVehicleCategories(formControl2.type.value)">
+              <mat-option *ngFor="let type of vehicleTypes" [value]="type">
+                {{type | capitalise}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
             <mat-label>Category</mat-label>
-            <input matInput formControlName="category" id="category">
+            <mat-select formControlName="category" id="category">
+              <mat-option *ngFor="let category of vehicleCategories" [value]="category">
+                {{category | capitalise}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
 
+          <div fxLayout fxFlex="60px" fxLayoutAlign="space-between center">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+
+      <mat-step [stepControl]="newVehicleForm3">
+        <form fxFlex fxLayout="column" fxLayoutAlign="space-evenly stretch" [formGroup]="newVehicleForm3"
+              id="new-vehicle-form-3" class="margin-t-15" (ngSubmit)="submitNewVehicle()">
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Colour</mat-label>
+            <input matInput formControlName="color" id="color">
+          </mat-form-field>
 
           <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
             <mat-label>Capacity</mat-label>
@@ -69,10 +93,10 @@
 
           <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
             <mat-label>Price per day</mat-label>
-            <input matInput formControlName="capacity" id="capacity" type="number">
+            <input matInput formControlName="day_price" id="day_price" placeholder="Price per day" type="currency">
           </mat-form-field>
 
-          <div>
+          <div fxLayout fxFlex="60px" fxLayoutAlign="space-between center">
             <button mat-raised-button matStepperPrevious>Back</button>
             <button mat-raised-button color="accent" type="submit">Add</button>
           </div>

@@ -7,6 +7,7 @@ import {appColours, appConfig} from "../../../../app.config";
 import {format, isEqual, parseISO} from 'date-fns';
 import {MatDialog} from "@angular/material/dialog";
 import {NewVehicleComponent} from "../new-vehicle/new-vehicle.component";
+import {VehicleComponent} from "../vehicle/vehicle.component";
 
 @Component({
   selector: 'app-vehicles',
@@ -21,6 +22,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   filters: any = {};
   rowHeight: string;
   subNewVehicleDialog$: Subscription;
+  subVehicle$: Subscription;
   subVehicles$: Subscription;
   subscriptionList = new Subscription();
   tiles: Tile[];
@@ -113,6 +115,34 @@ export class VehiclesComponent implements OnInit, OnDestroy {
     );
   }
 
+  openVehicleDialog(vehicle: Vehicle) {
+    const dialogRef = this.dialog.open(VehicleComponent, {
+      width: '90%',
+      maxWidth: '100%',
+      id: 'vehicle-dialog',
+      hasBackdrop: true,
+      backdropClass: 'blurred-backdrop',
+      data: {
+        name: `${vehicle.make} ${vehicle.model}`,
+        data: vehicle
+      }
+    });
+    this.subVehicle$ = dialogRef.afterClosed().subscribe(
+      response => {
+        if (response) {
+          console.log('Dialog res: ', response);
+          // this.getVehicles(this.filters);
+        }
+      },
+      error => {
+        console.error(error);
+      },
+      () => {
+        this.subscriptionList.add(this.subVehicle$);
+      }
+    )
+  }
+
   openNewVehicleDialog() {
     const dialogRef = this.dialog.open(NewVehicleComponent, {
       width: '600px',
@@ -136,6 +166,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
       }
     )
   }
+
   ngOnDestroy() {
     this.subscriptionList.unsubscribe();
   }

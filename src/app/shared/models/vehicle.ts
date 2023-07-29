@@ -8,6 +8,8 @@ export class Vehicle {
   capacity: number;
   day_price: number;
   picture: string;
+  wheels?: number;
+  color?: string;
 }
 
 export enum VehicleType {
