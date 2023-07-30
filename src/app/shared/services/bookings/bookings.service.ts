@@ -70,4 +70,20 @@ export class BookingsService {
       `${this.baseUrl}/vehicle-bookings/${booking_id}`, {headers: this.headers}
     )
   }
+
+  getAvailability(queryParams): Observable<Vehicle[]> {
+    let params = new HttpParams();
+
+    if (queryParams.start_date) {
+      params = params.append('start_date', queryParams.start_date);
+    }
+
+    if (queryParams.end_date) {
+      params = params.append('end_date', queryParams.end_date);
+    }
+
+    return this._http.get<Vehicle[]>(
+      `${this.baseUrl}/vehicle-availability`, {headers: this.headers, params: params}
+    )
+  }
 }

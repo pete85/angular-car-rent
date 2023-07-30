@@ -1,6 +1,6 @@
 <div fxLayout="column" fxFlex class="page-container">
-  <div fxLayout="column" fxFlex fxLayout.gt-sm fxFlex.gt-sm="90px" fxLayoutAlign="center center" fxLayoutGap="10px"
-       class="animated2000 fadeInDown animation-delay-2 w100 padding20 filters-container" *ngIf="vehicles">
+  <div fxLayout="column" fxFlex fxLayout.gt-sm fxFlex.gt-sm="60px" fxLayoutAlign="center center" fxLayoutGap="20px"
+       class="animated2000 fadeInDown animation-delay-1 w100 filters-container" *ngIf="vehicles">
     <div fxFlex fxFill>
       <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
         <mat-label>Make</mat-label>
@@ -22,7 +22,7 @@
       </mat-form-field>
     </div>
   </div>
-  <div fxLayout fxFlex fxLayoutAlign="center center" class="animated2000 fadeInUp animation-delay-1 w100 padding20">
+  <div fxLayout fxFlex fxLayoutAlign="center center" class="animated2000 fadeInUp animation-delay-1 w100">
     <mat-grid-list [cols]="columns" [rowHeight]="rowHeight" [gutterSize]="gridGutter" *ngIf="vehicles && tiles"
                    class="w100">
       <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
@@ -45,11 +45,12 @@
           <div fxLayout fxFlex fxLayoutAlign="center center">
             <img src="assets/images/default.png" alt="{{tile?.title}}" class="imgNewVehicle">
           </div>
-<!--          <div fxLayout fxFlex fxLayoutAlign="center center" class="padding10">-->
-<!--            <h4>Click here</h4>-->
-<!--          </div>-->
         </div>
       </mat-grid-tile>
     </mat-grid-list>
+  </div>
+  <div fxFlex fxLayoutAlign="center center" id="vehicle-counter" class="animated2000 fadeIn animation-delay-2"
+       *ngIf="vehiclesCount">
+    <h3>{{vehiclesCount}}</h3>
   </div>
 </div>

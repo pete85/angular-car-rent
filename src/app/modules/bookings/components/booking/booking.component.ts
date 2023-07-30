@@ -12,7 +12,6 @@ import {Router} from "@angular/router";
 })
 export class BookingComponent implements OnInit, OnDestroy {
   booking_id: string;
-  href: string;
   innerWidth: number;
   innerHeight: number;
   subBooking$: Subscription;
@@ -31,8 +30,7 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.href = this._router.url;
-    this.booking_id = this.href.split('/')[2];
+    this.booking_id = this._router.url.split('/')[2];
     this.getBooking(this.booking_id);
   }
 
@@ -40,6 +38,7 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.subBooking$ = this._bookingsService.getBooking(booking_id).subscribe(
       response => {
         if (response) {
+          this.booking = response;
           console.log('RES: ', response);
         }
       },

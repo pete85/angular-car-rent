@@ -2,7 +2,7 @@ import {Vehicle} from "./vehicle";
 import {Customer} from "./customer";
 
 export class Booking {
-  _id?: string | undefined;
+  _id?: string;
   reference: string;
   email?: string;
   vehicle?: Vehicle;

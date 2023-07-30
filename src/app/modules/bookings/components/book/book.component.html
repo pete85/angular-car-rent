@@ -1,1 +1,51 @@
-<p>book works!</p>
+<div fxLayout="column" fxFlex class="page-container">
+  <div fxLayout="column" fxFlex fxLayout.gt-sm fxFlex.gt-sm="60px" fxLayoutAlign="center center" fxLayoutGap="10px"
+       class="animated2000 fadeInDown animation-delay-2 w100 filters-container">
+    <div fxFlex fxFill>
+      <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+        <mat-label>Start Date</mat-label>
+        <input matInput id="start_date" autocomplete="off" [matDatepicker]="picker"
+               [(ngModel)]="filters.start_date"
+               (click)="picker.open()" [min]="today" [max]="maxDate" (ngModelChange)="updateEndDate()">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker mat-date-filter="0"></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+        <mat-label>End Date</mat-label>
+        <input matInput id="end_date" autocomplete="off" [matDatepicker]="pickerEnd"
+               [(ngModel)]="filters.end_date"
+               (click)="pickerEnd.open()" [min]="filters.start_date" [max]="maxDate"
+               (ngModelChange)="getAvailability(filters)">
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd mat-date-filter="0"></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout fxFlex fxLayoutAlign="center center" class="animated2000 fadeInUp animation-delay-1 w100">
+    <mat-grid-list [cols]="columns" [rowHeight]="rowHeight" [gutterSize]="gridGutter" *ngIf="vehicles && tiles"
+                   class="w100">
+      <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+                     [style.background]="tile.color" [routerLink]="tile?.linkUrl">
+        <div fxLayout="column" fxFlex *ngIf="tile.vehicle" class="vehicle-tile">
+          <div fxLayout="column" fxFlex fxLayoutAlign="center center">
+            <h2>{{tile?.vehicle?.make}}</h2>
+            <h4>{{tile?.vehicle?.model}} ({{tile?.vehicle?.date_produced | date : 'yyyy'}})</h4>
+          </div>
+          <div fxLayout fxFlex fxLayoutAlign="center center">
+            <img src="assets/images/{{tile?.image}}.png" alt="{{tile?.title}}">
+          </div>
+        </div>
+
+        <div fxFlex fxLayoutAlign="center center" class="book-now">
+          <h1>BOOK NOW</h1>
+        </div>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div fxFlex fxLayoutAlign="center center" id="vehicle-counter" class="animated2000 fadeIn animation-delay-2"
+       *ngIf="vehiclesCount">
+    <h3>{{vehiclesCount}}</h3>
+  </div>
+</div>

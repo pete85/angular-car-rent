@@ -2,7 +2,7 @@
   <div fxLayout fxFlex fxLayoutAlign="center center">
     <h1 class="txtWhite animated2000 fadeIn animation-delay-2">Welcome</h1>
   </div>
-  <div fxLayout fxFlex fxLayoutAlign="center center" class="animated2000 fadeInUp w100 padding20" *ngIf="showOptions">
+  <div fxLayout fxFlex fxLayoutAlign="center center" class="animated2000 fadeInUp w100" *ngIf="showOptions">
     <mat-grid-list [cols]="columns" [rowHeight]="rowHeight" [gutterSize]="gridGutter" *ngIf="tiles" class="w100">
       <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
                      [style.background]="tile.color" [routerLink]="tile?.linkUrl">

@@ -6,6 +6,7 @@ import {SharedModule} from "../../shared/shared.module";
 import { BookComponent } from './components/book/book.component';
 import { BookingComponent } from './components/booking/booking.component';
 import {FlexModule} from "@angular/flex-layout";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import {FlexModule} from "@angular/flex-layout";
     CommonModule,
     BookingsRoutingModule,
     SharedModule,
-    FlexModule
+    FlexModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class BookingsModule {

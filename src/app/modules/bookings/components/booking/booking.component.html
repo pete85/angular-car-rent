@@ -1,1 +1,54 @@
-<p>booking works!</p>
+<div fxLayout="column" fxLayout.gt-sm fxFlex class="page-container txtWhite" *ngIf="booking">
+  <div fxLayout="column" fxFlex>
+    <div fxFlex="50px">
+      <h2>{{booking?.reference}}</h2>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start">
+      <h4>Make</h4>
+      <h4>{{booking?.vehicle?.make}}</h4>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start">
+      <h4>Model</h4>
+      <h4>{{booking?.vehicle?.model}}</h4>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start">
+      <h4>Customer</h4>
+      <h4>{{booking?.customer?.first_name}} {{booking?.customer?.last_name}}</h4>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start">
+      <h4>Email</h4>
+      <h4>{{booking?.customer?.email}}</h4>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start">
+      <h4>Phone</h4>
+      <h4>{{booking?.customer?.phone}}</h4>
+    </div>
+    <div fxFlex fxLayoutAlign="space-between center">
+      <div fxLayout="column" fxFlex>
+        <div fxFlex="50px">
+          <h2>From</h2>
+        </div>
+        <div fxFlex="50px">
+          <h4 class="fontSizeXL">{{booking?.start_date | date : 'dd/MM/yyyy'}}</h4>
+        </div>
+        <div fxFlex="50px">
+          <h4 class="fontSizeXL">{{booking?.start_date | date : 'hh:mm'}}</h4>
+        </div>
+      </div>
+      <div fxLayout="column" fxFlex>
+        <div fxFlex="50px">
+          <h2>To</h2>
+        </div>
+        <div fxFlex="50px">
+          <h4 class="fontSizeXL">{{booking?.end_date | date : 'dd/MM/yyyy'}}</h4>
+        </div>
+        <div fxFlex="50px">
+          <h4 class="fontSizeXL">{{booking?.end_date | date : 'hh:mm'}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column" fxFlex fxLayoutAlign="center center">
+    <img src="../../../../../assets/images/{{booking?.vehicle?.picture}}.png" alt="Vehicle" class="w100">
+  </div>
+</div>

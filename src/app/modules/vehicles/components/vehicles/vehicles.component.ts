@@ -27,6 +27,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   subscriptionList = new Subscription();
   tiles: Tile[];
   vehicles: Vehicle[];
+  vehiclesCount: number;
   yearOptions: string[];
 
   @HostListener('window:resize', ['$event'])
@@ -84,6 +85,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
       response => {
         if (response) {
           this.vehicles = response;
+          this.vehiclesCount = response.length;
           response.forEach(el => {
             this.tiles.push({
               title: el.make,
