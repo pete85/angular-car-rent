@@ -3,6 +3,7 @@ import {Subscription} from "rxjs/internal/Subscription";
 import {Booking} from "../../../../shared/models/booking";
 import {BookingsService} from "../../../../shared/services/bookings/bookings.service";
 import {MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bookings',
@@ -27,7 +28,8 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
 
   constructor(private _bookingsService: BookingsService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private _router: Router) {
     this.onResize();
   }
   ngOnInit() {
@@ -52,7 +54,14 @@ export class BookingsComponent implements OnInit, OnDestroy {
     )
   }
 
+  goToBooking(booking_id: string | undefined) {
+    if (booking_id) {
+      this._router.navigate([`/bookings/${booking_id}`]);
+    }
+  }
+
   ngOnDestroy() {
+    this.subscriptionList.unsubscribe();
   }
 
 }

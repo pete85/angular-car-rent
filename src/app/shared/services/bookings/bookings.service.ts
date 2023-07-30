@@ -64,4 +64,10 @@ export class BookingsService {
       `${this.baseUrl}/vehicle-bookings`, {headers: this.headers, params: params}
     )
   }
+
+  getBooking(booking_id): Observable<Booking> {
+    return this._http.get<Booking>(
+      `${this.baseUrl}/vehicle-bookings/${booking_id}`, {headers: this.headers}
+    )
+  }
 }

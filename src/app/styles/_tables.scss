@@ -2,7 +2,6 @@
 @import "mixins";
 
 .responsive-table {
-  border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
   padding: 0;
@@ -14,10 +13,15 @@
     margin: .5em 0 .75em;
   }
   tr {
-    background-color: #f8f8f8;
+    background-color: map-get($appColours, 'lightGrey');
     border: 1px solid #ddd;
     padding: .35em;
-    height: 50px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      background-color: map-get($appColours, 'primary');
+      color: map-get($appColours, 'white');
+    }
   }
   th, td {
     padding: .625em;
@@ -27,6 +31,11 @@
     font-size: .85em;
     letter-spacing: .1em;
     text-transform: uppercase;
+    background-color: map-get($appColours, 'primary');
+    color: map-get($appColours, 'white');
+  }
+  td {
+    font-size: .8em;
   }
   @include respond-below(sm) {
     border: 0;

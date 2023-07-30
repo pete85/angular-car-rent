@@ -4,9 +4,9 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
 import {CapitalisePipe} from './pipes/capitalise/capitalise.pipe';
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {CommonModule} from "@angular/common";
+import {CommonModule, CurrencyPipe} from "@angular/common";
 import {FlexModule} from "@angular/flex-layout";
-import {CurrencyPipe} from "@angular/common";
+import {TruncatePipe} from './pipes/truncate/truncate.pipe';
 
 @NgModule({
   imports: [
@@ -16,16 +16,18 @@ import {CurrencyPipe} from "@angular/common";
     CommonModule,
     FlexModule
   ],
+  declarations: [
+    PageNotFoundComponent,
+    CapitalisePipe,
+    NavigationComponent,
+    TruncatePipe
+  ],
   exports: [
     MaterialModule,
     CapitalisePipe,
     NavigationComponent,
-    CommonModule
-  ],
-  declarations: [
-    PageNotFoundComponent,
-    CapitalisePipe,
-    NavigationComponent
+    CommonModule,
+    TruncatePipe
   ],
   providers: [
     CurrencyPipe
