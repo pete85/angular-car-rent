@@ -7,13 +7,15 @@ import { BookComponent } from './components/book/book.component';
 import { BookingComponent } from './components/booking/booking.component';
 import {FlexModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { NewBookingComponent } from './components/new-booking/new-booking.component';
 
 
 @NgModule({
   declarations: [
     BookingsComponent,
     BookComponent,
-    BookingComponent
+    BookingComponent,
+    NewBookingComponent
   ],
   imports: [
     CommonModule,

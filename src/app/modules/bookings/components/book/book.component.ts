@@ -1,11 +1,15 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs/internal/Subscription";
 import {Booking} from "../../../../shared/models/booking";
-import {addDays, addMonths, addWeeks, format, isBefore} from "date-fns";
+import {addDays, addMonths, addWeeks, differenceInDays, format, isBefore} from "date-fns";
 import {BookingsService} from "../../../../shared/services/bookings/bookings.service";
 import {appColours, appConfig} from "../../../../app.config";
 import {Tile} from "../../../../shared/models/tile";
 import {Vehicle} from "../../../../shared/models/vehicle";
+import {NewVehicleComponent} from "../../../vehicles/components/new-vehicle/new-vehicle.component";
+import {MatDialog} from "@angular/material/dialog";
+import {NewBookingComponent} from "../new-booking/new-booking.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-book',
@@ -26,6 +30,7 @@ export class BookComponent implements OnInit, OnDestroy {
   subscriptionList = new Subscription();
   tiles: Tile[];
   today: Date = new Date();
+  totalPrice: number;
   maxDate: Date = addMonths(this.today, 6);
   vehiclesCount: number;
   vehicles: Vehicle[];
@@ -42,7 +47,9 @@ export class BookComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor(private _bookingsService: BookingsService) {
+  constructor(private _bookingsService: BookingsService,
+              public dialog: MatDialog,
+              private _router: Router) {
     this.onResize();
   }
 
@@ -50,6 +57,8 @@ export class BookComponent implements OnInit, OnDestroy {
     this.filters = {
       start_date: addDays(new Date(), 1),
       end_date: addDays(new Date(), 2),
+      start_time: '12:00',
+      end_time: '12:00',
     }
     this.getAvailability(this.filters);
   }
@@ -110,6 +119,45 @@ export class BookComponent implements OnInit, OnDestroy {
         this.subscriptionList.add(this.subAvailability$);
       }
     );
+  }
+
+  openNewBookingDialog(selected_vehicle: any) {
+
+    const dialogRef = this.dialog.open(NewBookingComponent, {
+      width: '600px',
+      maxWidth: '100%',
+      data: {
+        name: `Book ${selected_vehicle.make} ${selected_vehicle.model}`,
+        vehicle: selected_vehicle,
+        filters: this.filters,
+        price: this.calculateTotalPrice(selected_vehicle.day_price, this.filters.start_date, this.filters.end_date)
+      }
+    });
+    this.subNewBooking$ = dialogRef.afterClosed().subscribe(
+      response => {
+        if (response) {
+          this._router.navigate([`/bookings`]);
+        }
+      },
+      error => {
+        console.error(error);
+      },
+      () => {
+        this.subscriptionList.add(this.subNewBooking$);
+      }
+    )
+  }
+
+  calculateTotalPrice(vehicle_price, start_date, end_date) {
+    let total_price;
+
+    console.log('V price: ', vehicle_price);
+
+    total_price = differenceInDays(end_date, start_date) * vehicle_price;
+    console.log('Diff: ', differenceInDays(end_date, start_date));
+    console.log('total: ', total_price);
+
+    return total_price;
   }
 
   ngOnDestroy() {

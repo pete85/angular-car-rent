@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {Vehicle, VehicleType, VehicleCategory} from "../../models/vehicle";
 import {Booking} from "../../models/booking";
+import {Customer} from "../../models/customer";
 
 @Injectable({
   providedIn: 'root'
@@ -86,4 +87,26 @@ export class BookingsService {
       `${this.baseUrl}/vehicle-availability`, {headers: this.headers, params: params}
     )
   }
+
+  getCustomers(queryParams): Observable<Customer[]> {
+    let params = new HttpParams();
+
+    if (queryParams.name) {
+      params = params.append('name', queryParams.name);
+    }
+
+    if (queryParams.email) {
+      params = params.append('email', queryParams.email);
+    }
+
+    return this._http.get<Customer[]>(
+      `${this.baseUrl}/customers`, {headers: this.headers, params: params}
+    )
+  }
+  addCustomer(payload: Customer): Observable<Customer> {
+    return this._http.post<Customer>(
+      `${this.baseUrl}/customers`, payload, {headers: this.headers}
+    )
+  }
+
 }

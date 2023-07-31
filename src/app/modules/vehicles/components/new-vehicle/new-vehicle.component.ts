@@ -76,7 +76,6 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
       }
     );
   }
-
   get formControl1() {
     return this.newVehicleForm1.controls;
   }
@@ -88,6 +87,7 @@ export class NewVehicleComponent implements OnInit, OnDestroy{
   get formControl3() {
     return this.newVehicleForm3.controls;
   }
+
 
   submitNewVehicle() {
     const payload = {

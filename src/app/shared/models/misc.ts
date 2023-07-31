@@ -1,3 +1,5 @@
+import {Vehicle} from "./vehicle";
+
 export enum ActionType {
   CREATE = 'create',
   EDIT = 'edit',
@@ -24,6 +26,11 @@ export class DialogData {
   message?: string;
   isActive?: boolean;
   icon?: IconConfig;
+  start_date?: Date;
+  end_date?: Date;
+  vehicle?: Vehicle;
+  filters: any;
+  price: number;
 }
 
 export enum Months {

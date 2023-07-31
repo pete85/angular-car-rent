@@ -1,0 +1,160 @@
+<div fxLayout="column" fxFlex *ngIf="data">
+  <div fxFlex fxLayoutAlign="space-between center" class="padding-b-10">
+    <div fxLayout fxFlex fxLayoutAlign="start center">
+      <h3 class="font600">{{data.name | capitalise}}</h3>
+    </div>
+    <!--    <div fxLayout fxFlex fxLayoutAlign="start center">-->
+    <!--      <h4 class="font600">{{data.start_date | date : 'dd/MM/yy'}}</h4>-->
+    <!--    </div>-->
+    <div fxFlex="10" fxLayoutAlign="end center">
+      <button mat-icon-button mat-dialog-close="" aria-label="Close" class="close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div fxFlex fxLayoutAlign="space-between center" class="padding-b-10">
+    <div fxLayout fxFlex fxLayoutAlign="start center">
+      <h4>From: {{data.filters.start_date | date : 'dd/MM/yyyy'}} {{data.filters.start_time}}</h4>
+    </div>
+    <div fxLayout fxFlex fxLayoutAlign="end center">
+      <h4>To: {{data.filters.end_date | date : 'dd/MM/yyyy'}} {{data.filters.end_time}}</h4>
+    </div>
+  </div>
+
+  <div fxFlex fxLayoutAlign="space-between center">
+    <mat-stepper [linear]="false" #stepper animationDuration="2000" class="w100">
+      <mat-step>
+        <div fxFlex fxLayout="column" fxLayoutAlign="space-evenly stretch" class="margin-t-15">
+
+          <div fxFlex fxLayoutAlign="center center" class="padding-b-10">
+            <h4>Search for customer</h4>
+          </div>
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="filters.name" (keyup)="getCustomers(filters)" id="name">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="filters.email" (keyup)="getCustomers(filters)" id="email_one">
+          </mat-form-field>
+
+          <div fxFlex fxLayoutAlign="center center" class="padding-b-10" *ngIf="!customers">
+            <h4>OR</h4>
+          </div>
+
+          <button mat-raised-button color="primary" class="w100 margin-lr-0" *ngIf="!customers" matStepperNext>Add
+            Customer
+          </button>
+
+          <table class="responsive-table" *ngIf="customers">
+            <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let customer of customers" (click)="selectCustomer(customer)">
+              <td data-label="Name">{{customer?.first_name}} {{customer?.last_name}}</td>
+              <td data-label="Email">{{customer?.email | truncate: 20}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="newBookingForm1">
+        <form fxFlex fxLayout="column" fxLayoutAlign="space-evenly stretch" [formGroup]="newBookingForm1"
+              id="new-booking-form-1" class="margin-t-15" (ngSubmit)="addCustomer()">
+
+          <div fxFlex fxLayoutAlign="space-between center" fxLayoutGap="5px">
+            <mat-form-field appearance="outline" class="animated fadeIn w100">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="first_name" id="first_name">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="animated fadeIn w100">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="last_name" id="last_name">
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="animated fadeIn" fxFlex>
+            <mat-label>Date of birth</mat-label>
+            <input matInput id="date_of_birth" autocomplete="off" [matDatepicker]="picker"
+                   formControlName="date_of_birth"
+                   (click)="picker.open()" [max]="maxDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker mat-date-filter="0"></mat-datepicker>
+          </mat-form-field>
+
+          <div fxFlex fxLayoutAlign="space-between center" fxLayoutGap="5px">
+            <mat-form-field appearance="outline" class="animated fadeIn w100">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" id="email">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="animated fadeIn w100">
+              <mat-label>Phone</mat-label>
+              <input matInput formControlName="phone" id="phone">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex fxLayoutAlign="space-between center" fxLayoutGap="5px">
+            <mat-form-field appearance="outline" class="animated fadeIn w100">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="address_1" id="address_1">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="animated fadeIn w100">
+              <mat-label>Address 2</mat-label>
+              <input matInput formControlName="address_2" id="address_2">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex fxLayoutAlign="space-between center" fxLayoutGap="5px">
+            <mat-form-field appearance="outline" class="animated fadeIn w100">
+              <mat-label>Postcode</mat-label>
+              <input matInput formControlName="postcode" id="postcode">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="animated fadeIn w100">
+              <mat-label>County</mat-label>
+              <input matInput formControlName="county" id="county">
+            </mat-form-field>
+          </div>
+
+          <div fxLayout fxFlex="60px" fxLayoutAlign="space-between center">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="accent" type="submit">Add</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <div fxLayout="column" fxFlex>
+          <div fxLayout fxFlex="50px" fxLayoutAlign="center center">
+            <h3>Summary</h3>
+          </div>
+          <div fxLayout fxFlex="50px" fxLayoutAlign="space-between center">
+            <h4>Vehicle</h4>
+            <h4>{{data?.vehicle?.make}} {{data?.vehicle?.model}} ({{data?.vehicle?.reg}})</h4>
+          </div>
+          <div fxLayout fxFlex="50px" fxLayoutAlign="space-between center">
+            <h4>Customer</h4>
+            <h4>{{selectedCustomer?.first_name}} {{selectedCustomer?.last_name}}</h4>
+          </div>
+          <div fxLayout fxFlex="50px" fxLayoutAlign="space-between center">
+            <h4>Price</h4>
+            <h4>{{data?.price | currency : 'GBP'}}</h4>
+          </div>
+          <div fxLayout fxFlex="100px" fxLayoutAlign="space-between center">
+            <button mat-raised-button color="warn" (click)="closeDialog(null)" class="margin-lr-0">Cancel</button>
+            <button mat-raised-button color="primary" (click)="createBooking()" class="margin-lr-0">Book</button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>
