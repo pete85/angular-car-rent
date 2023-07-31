@@ -7,8 +7,10 @@ import {DialogData} from "../../../../shared/models/misc";
 import {BookingsService} from "../../../../shared/services/bookings/bookings.service";
 import {CurrencyPipe} from "@angular/common";
 import {Customer} from "../../../../shared/models/customer";
-import {subYears} from "date-fns";
+import {format, subYears} from "date-fns";
 import {MatStepper} from "@angular/material/stepper";
+import {Booking} from "../../../../shared/models/booking";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-booking',
@@ -21,29 +23,24 @@ export class NewBookingComponent implements OnInit, OnDestroy {
 
   customers: Customer[];
   filters: any = {};
-  minDate: Date = new Date(2010, 0, 1);
   maxDate: Date = subYears(new Date(), 16);
   newBookingForm1: UntypedFormGroup;
   newBookingForm2: UntypedFormGroup;
-  newBookingForm3: UntypedFormGroup;
   selectedCustomer: Customer;
-  stepperIndex: number;
   subCustomers$: Subscription;
   subNewBooking$: Subscription;
   subNewCustomer$: Subscription;
   subscriptionList = new Subscription();
-  vehicleCategories: VehicleCategory[];
-  vehicleTypes: VehicleType[];
 
   constructor(public dialogRef: MatDialogRef<NewBookingComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private _formBuilder: UntypedFormBuilder,
               private _bookingsService: BookingsService,
-              private _currencyPipe: CurrencyPipe) {
+              private _currencyPipe: CurrencyPipe,
+              private _router: Router) {
   }
 
   ngOnInit() {
-    console.log('data: ', this.data);
     this.buildForm();
   }
 
@@ -52,7 +49,6 @@ export class NewBookingComponent implements OnInit, OnDestroy {
       response => {
         if (response) {
           this.customers = response;
-          console.log('Customers: ', this.customers);
         }
       },
       error => {
@@ -99,7 +95,7 @@ export class NewBookingComponent implements OnInit, OnDestroy {
   selectCustomer(customer: Customer) {
     console.log('Selected customer: ', customer);
     this.selectedCustomer = customer;
-    this.myStepper.selectedIndex = this.myStepper._steps.length-1;
+    this.myStepper.selectedIndex = this.myStepper._steps.length - 1;
   }
 
   addCustomer() {
@@ -134,6 +130,43 @@ export class NewBookingComponent implements OnInit, OnDestroy {
   }
 
   createBooking() {
+
+    const randomString = (Math.random() + 1).toString(36).substring(4);
+    let payload: Booking;
+    let start_date: string = format(
+      this.data.filters.start_date,
+      `yyyy-MM-dd'T'${this.data.filters.start_time.split(':')[0]}:${this.data.filters.start_time.split(':')[1]}:00`);
+
+    let end_date: string = format(
+      this.data.filters.end_date,
+      `yyyy-MM-dd'T'${this.data.filters.end_time.split(':')[0]}:${this.data.filters.end_time.split(':')[1]}:00`);
+
+    console.log('start_date: ', start_date);
+
+    payload = {
+      reference: randomString,
+      email: this.selectedCustomer.email,
+      vehicle: this.data.vehicle,
+      customer: this.selectedCustomer,
+      start_date: start_date,
+      end_date: end_date,
+      price: this.data.price
+    }
+
+    this.subNewBooking$ = this._bookingsService.createBooking(payload).subscribe(
+      response => {
+        if (response) {
+          this._router.navigate([`/bookings/`]);
+          this.closeDialog(response);
+        }
+      },
+      error => {
+        console.error(error);
+      },
+      () => {
+        this.subscriptionList.add(this.subNewBooking$);
+      }
+    );
 
   }
 

@@ -149,15 +149,7 @@ export class BookComponent implements OnInit, OnDestroy {
   }
 
   calculateTotalPrice(vehicle_price, start_date, end_date) {
-    let total_price;
-
-    console.log('V price: ', vehicle_price);
-
-    total_price = differenceInDays(end_date, start_date) * vehicle_price;
-    console.log('Diff: ', differenceInDays(end_date, start_date));
-    console.log('total: ', total_price);
-
-    return total_price;
+    return differenceInDays(end_date, start_date) * vehicle_price;
   }
 
   ngOnDestroy() {

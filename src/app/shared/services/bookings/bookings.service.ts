@@ -109,4 +109,10 @@ export class BookingsService {
     )
   }
 
+  createBooking(payload): Observable<Booking> {
+    return this._http.post<Booking>(
+      `${this.baseUrl}/vehicle-bookings`, payload, {headers: this.headers}
+    )
+  }
+
 }

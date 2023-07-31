@@ -1,7 +1,8 @@
 <div fxLayout="column" fxLayout.gt-sm fxFlex class="page-container txtWhite" *ngIf="booking">
   <div fxLayout="column" fxFlex>
-    <div fxFlex="50px">
+    <div fxFlex="50px" fxLayoutAlign="space-between start">
       <h2>{{booking?.reference}}</h2>
+      <h2>{{booking?.price | currency : 'GBP'}}</h2>
     </div>
     <div fxFlex="40px" fxLayoutAlign="space-between start">
       <h4>Make</h4>

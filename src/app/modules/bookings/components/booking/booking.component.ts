@@ -39,7 +39,6 @@ export class BookingComponent implements OnInit, OnDestroy {
       response => {
         if (response) {
           this.booking = response;
-          console.log('RES: ', response);
         }
       },
       error => {
