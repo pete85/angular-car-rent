@@ -1,8 +1,8 @@
 <div fxLayout="column" fxLayout.gt-sm fxFlex class="page-container txtWhite" *ngIf="booking">
-  <div fxLayout="column" fxFlex>
+  <div fxLayout="column" fxFlex fxLayoutAlign="center space-between" class="mat-grid-tile padding20">
     <div fxFlex="50px" fxLayoutAlign="space-between start">
-      <h2>{{booking?.reference}}</h2>
-      <h2>{{booking?.price | currency : 'GBP'}}</h2>
+      <h2>Reference</h2>
+      <h2 [ngClass]="innerWidth < 500 ? 'fontSizeS' : ''">{{booking?.reference}}</h2>
     </div>
     <div fxFlex="40px" fxLayoutAlign="space-between start">
       <h4>Make</h4>
@@ -22,33 +22,33 @@
       <h4 [ngClass]="innerWidth > 500 ? 'fontSizeS' : 'fontSizeXS'">
         {{booking?.customer?.email | truncate: 30}}</h4>
     </div>
-    <div fxFlex="40px" fxLayoutAlign="space-between start">
+    <div fxFlex="40px" fxLayoutAlign="space-between start" class="border-bottom-2px-white">
       <h4>Phone</h4>
       <h4>{{booking?.customer?.phone}}</h4>
     </div>
-    <div fxFlex fxLayoutAlign="space-between center">
-      <div fxLayout="column" fxFlex fxLayoutAlign="center center">
-        <div fxFlex="40px">
-          <h2>From</h2>
-        </div>
-        <div fxFlex="30px">
-          <h4 class="fontSizeM">{{booking?.start_date | date : 'dd/MM/yyyy'}}</h4>
-        </div>
-        <div fxFlex="30px">
-          <h4 class="fontSizeM">{{booking?.start_date | date : 'hh:mm'}}</h4>
-        </div>
-      </div>
-      <div fxLayout="column" fxFlex fxLayoutAlign="center center">
-        <div fxFlex="40px">
-          <h2>To</h2>
-        </div>
-        <div fxFlex="30px">
-          <h4 class="fontSizeM">{{booking?.end_date | date : 'dd/MM/yyyy'}}</h4>
-        </div>
-        <div fxFlex="30px">
-          <h4 class="fontSizeM">{{booking?.end_date | date : 'hh:mm'}}</h4>
-        </div>
-      </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start" class="margin-t-20">
+      <h4>Start Date</h4>
+      <h4>{{booking?.start_date | date : 'dd/MM/yyyy'}}</h4>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start">
+      <h4>Start Time</h4>
+      <h4>{{booking?.start_date | date : 'hh:mm'}}</h4>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start">
+      <h4>End Date</h4>
+      <h4>{{booking?.end_date | date : 'dd/MM/yyyy'}}</h4>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start">
+      <h4>End Time</h4>
+      <h4>{{booking?.end_date | date : 'hh:mm'}}</h4>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="space-between start" *ngIf="duration">
+      <h4>Duration</h4>
+      <h4>{{duration}} <span *ngIf="duration === 1">day</span> <span *ngIf="duration > 1">days</span></h4>
+    </div>
+    <div fxFlex="50px" fxLayoutAlign="space-between start">
+      <h2>Total Price</h2>
+      <h2>{{booking?.price | currency : 'GBP'}}</h2>
     </div>
   </div>
   <div fxLayout="column" fxFlex fxLayoutAlign="center center">

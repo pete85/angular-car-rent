@@ -2,8 +2,8 @@ import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs/internal/Subscription";
 import {Booking} from "../../../../shared/models/booking";
 import {BookingsService} from "../../../../shared/services/bookings/bookings.service";
-import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {differenceInDays} from "date-fns";
 
 @Component({
   selector: 'app-booking',
@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 })
 export class BookingComponent implements OnInit, OnDestroy {
   booking_id: string;
+  duration: any;
   innerWidth: number;
   innerHeight: number;
   subBooking$: Subscription;
@@ -39,6 +40,11 @@ export class BookingComponent implements OnInit, OnDestroy {
       response => {
         if (response) {
           this.booking = response;
+          console.log(response.start_date);
+          if (response.start_date && response.end_date) {
+            this.duration = differenceInDays(new Date(response.end_date), new Date(response.start_date));
+          }
+          console.log('Duration: ', this.duration);
         }
       },
       error => {

@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Vehicle, VehicleType} from "../../../../shared/models/vehicle";
 import {Subscription} from "rxjs/internal/Subscription";
 import {BookingsService} from "../../../../shared/services/bookings/bookings.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-vehicle',
@@ -25,7 +26,8 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
   constructor(public dialogRef: MatDialogRef<VehicleComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              private _bookingsService: BookingsService) {
+              private _bookingsService: BookingsService,
+              private _router: Router) {
     this.onResize();
   }
 
@@ -44,7 +46,6 @@ export class VehicleComponent implements OnInit, OnDestroy {
   }
 
   removeVehicle(vehicle_id: any) {
-    console.log('Vehicle id: ', vehicle_id);
     this.subRemovedVehicle$ = this._bookingsService.removeVehicle(vehicle_id).subscribe(
       response => {
         if (response) {
@@ -58,6 +59,11 @@ export class VehicleComponent implements OnInit, OnDestroy {
         this.subscriptionList.add(this.subRemovedVehicle$)
       }
     )
+  }
+
+  bookVehicle(vehicle_id: any) {
+    this.closeDialog(null);
+    this._router.navigate(['bookings/new'])
   }
 
   closeDialog(data): void {

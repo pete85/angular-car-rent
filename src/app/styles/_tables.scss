@@ -13,10 +13,21 @@
     margin: .5em 0 .75em;
   }
   tr {
-    background-color: map-get($appColours, 'lightGrey');
     border: 1px solid #ddd;
-    padding: .35em;
     cursor: pointer;
+  }
+  tr:nth-child(even) {
+    background-color: rgba(map-get($appColours, 'lightGrey'), 0.6);
+    color: map-get($appColours, 'black');
+    transition: all 200ms ease-in-out;
+    &:hover {
+      background-color: map-get($appColours, 'primary');
+      color: map-get($appColours, 'white');
+    }
+  }
+  tr:nth-child(odd) {
+    background-color: rgba(map-get($appColours, 'grey'), 0.6);
+    color: map-get($appColours, 'white');
     transition: all 200ms ease-in-out;
     &:hover {
       background-color: map-get($appColours, 'primary');
@@ -24,18 +35,19 @@
     }
   }
   th, td {
-    padding: .625em;
     text-align: center;
   }
   th {
     font-size: .85em;
     letter-spacing: .1em;
+    padding: 20px 5px !important;
     text-transform: uppercase;
-    background-color: map-get($appColours, 'primary');
+    background-color: map-get($appColours, 'black');
     color: map-get($appColours, 'white');
   }
   td {
     font-size: .8em;
+    padding: 15px !important;
   }
   @include respond-below(sm) {
     border: 0;

@@ -164,23 +164,35 @@ h1, h2, h3, h4, p {
 }
 
 .txtStroke {
-  -webkit-text-stroke: 2px white;
-  color: map-get($appColours, 'grey');
+  -webkit-text-stroke: 2px map-get($appColours, 'white');
+  color: map-get($appColours, 'black');
   paint-order: stroke fill;
 }
 
 .txtStroke1 {
-  -webkit-text-stroke: 1px white;
-  color: map-get($appColours, 'grey');
+  -webkit-text-stroke: 1px map-get($appColours, 'white');
+  color: map-get($appColours, 'black');
+  paint-order: stroke fill;
+}
+
+.txtStrokeBlack {
+  -webkit-text-stroke: 2px map-get($appColours, 'black');
+  color: map-get($appColours, 'white');
+  paint-order: stroke fill;
+}
+
+.txtStrokeBlack1 {
+  -webkit-text-stroke: 1px map-get($appColours, 'black');
+  color: map-get($appColours, 'white');
   paint-order: stroke fill;
 }
 
 .txtStrokeBW {
-  color: map-get($appColours, 'grey') !important;
-  -webkit-text-stroke: 2px map-get($appColours, 'grey') !important;
+  color: map-get($appColours, 'black') !important;
+  -webkit-text-stroke: 2px map-get($appColours, 'black') !important;
   -webkit-text-fill-color: map-get($appColours, 'white') !important; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: map-get($appColours, 'grey') !important;
+  -webkit-text-stroke-color: map-get($appColours, 'black') !important;
 }
 
 .txtWhite {
@@ -803,6 +815,10 @@ h1, h2, h3, h4, p {
 
 .border-bottom-2px-lightGrey {
   border-bottom: 2px solid map-get($appColours, 'lightGrey') !important;
+}
+
+.border-bottom-2px-white {
+  border-bottom: 2px solid map-get($appColours, 'white') !important;
 }
 
 .border-left-2px {
