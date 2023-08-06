@@ -28,23 +28,23 @@
         </div>
         <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Type</h3>
-          <h3>{{vehicle?.type}}</h3>
+          <h3>{{vehicle.type}}</h3>
         </div>
         <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Category</h3>
-          <h3>{{vehicle?.category}}</h3>
+          <h3>{{vehicle.category}}</h3>
         </div>
         <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Seats</h3>
-          <h3>{{vehicle?.capacity}}</h3>
+          <h3>{{vehicle.capacity}}</h3>
         </div>
         <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Wheels</h3>
-          <h3>{{vehicle?.wheels}}</h3>
+          <h3>{{vehicle.wheels}}</h3>
         </div>
         <div fxLayout fxFlex="35px" fxLayoutAlign="space-between end">
           <h3>Price</h3>
-          <h3>{{vehicle?.day_price | currency}} / day</h3>
+          <h3>{{vehicle.day_price | currency}} / day</h3>
         </div>
         <div fxLayout fxFlex fxLayoutAlign="space-between end" class="margin-t-10">
           <button mat-raised-button color="warn" class="margin-lr-0" (click)="removeVehicle(vehicle._id)">Remove
