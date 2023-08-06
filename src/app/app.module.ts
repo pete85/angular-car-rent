@@ -8,6 +8,7 @@ import {CommonModule} from "@angular/common";
 import {FlexModule} from '@angular/flex-layout';
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from '@angular/common/http';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

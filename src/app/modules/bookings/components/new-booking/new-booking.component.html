@@ -1,11 +1,8 @@
-<div fxLayout="column" fxFlex *ngIf="data">
+<div fxLayout="column" fxFlex *ngIf="data" class="w100">
   <div fxFlex fxLayoutAlign="space-between center" class="padding-b-10">
     <div fxLayout fxFlex fxLayoutAlign="start center">
       <h3 class="font600">{{data.name | capitalise}}</h3>
     </div>
-    <!--    <div fxLayout fxFlex fxLayoutAlign="start center">-->
-    <!--      <h4 class="font600">{{data.start_date | date : 'dd/MM/yy'}}</h4>-->
-    <!--    </div>-->
     <div fxFlex="10" fxLayoutAlign="end center">
       <button mat-icon-button mat-dialog-close="" aria-label="Close" class="close">
         <mat-icon>close</mat-icon>
@@ -14,11 +11,15 @@
   </div>
 
   <div fxFlex fxLayoutAlign="space-between center" class="padding-b-10">
-    <div fxLayout fxFlex fxLayoutAlign="start center">
-      <h4>From: {{data.filters.start_date | date : 'dd/MM/yyyy'}} {{data.filters.start_time}}</h4>
+    <div fxLayout="column" fxFlex fxLayoutAlign="start center">
+      <h4>From:</h4>
+      <h4>{{data.filters.start_date | date : 'dd/MM/yyyy'}}</h4>
+      <h4>{{data.filters.start_time}}</h4>
     </div>
-    <div fxLayout fxFlex fxLayoutAlign="end center">
-      <h4>To: {{data.filters.end_date | date : 'dd/MM/yyyy'}} {{data.filters.end_time}}</h4>
+    <div fxLayout="column" fxFlex fxLayoutAlign="end center">
+      <h4>To:</h4>
+      <h4>{{data.filters.end_date | date : 'dd/MM/yyyy'}}</h4>
+      <h4>{{data.filters.end_time}}</h4>
     </div>
   </div>
 
@@ -67,7 +68,7 @@
       </mat-step>
       <mat-step [stepControl]="newBookingForm1">
         <form fxFlex fxLayout="column" fxLayoutAlign="space-evenly stretch" [formGroup]="newBookingForm1"
-              id="new-booking-form-1" class="margin-t-15" (ngSubmit)="addCustomer()">
+              id="new-booking-form-1" class="margin-t-15 w100" (ngSubmit)="addCustomer()">
 
           <div fxFlex fxLayoutAlign="space-between center" fxLayoutGap="5px">
             <mat-form-field appearance="outline" class="animated fadeIn w100">

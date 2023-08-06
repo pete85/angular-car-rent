@@ -125,7 +125,6 @@ export class BookComponent implements OnInit, OnDestroy {
 
     const dialogRef = this.dialog.open(NewBookingComponent, {
       width: '600px',
-      maxWidth: '100%',
       data: {
         name: `Book ${selected_vehicle.make} ${selected_vehicle.model}`,
         vehicle: selected_vehicle,

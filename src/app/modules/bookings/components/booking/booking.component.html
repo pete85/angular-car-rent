@@ -14,37 +14,39 @@
     </div>
     <div fxFlex="40px" fxLayoutAlign="space-between start">
       <h4>Customer</h4>
-      <h4>{{booking?.customer?.first_name}} {{booking?.customer?.last_name}}</h4>
+      <h4 [ngClass]="innerWidth > 500 ? 'fontSizeS' : 'fontSizeXS'">
+        {{booking?.customer?.first_name}} {{booking?.customer?.last_name}}</h4>
     </div>
     <div fxFlex="40px" fxLayoutAlign="space-between start">
       <h4>Email</h4>
-      <h4>{{booking?.customer?.email}}</h4>
+      <h4 [ngClass]="innerWidth > 500 ? 'fontSizeS' : 'fontSizeXS'">
+        {{booking?.customer?.email | truncate: 30}}</h4>
     </div>
     <div fxFlex="40px" fxLayoutAlign="space-between start">
       <h4>Phone</h4>
       <h4>{{booking?.customer?.phone}}</h4>
     </div>
     <div fxFlex fxLayoutAlign="space-between center">
-      <div fxLayout="column" fxFlex>
-        <div fxFlex="50px">
+      <div fxLayout="column" fxFlex fxLayoutAlign="center center">
+        <div fxFlex="40px">
           <h2>From</h2>
         </div>
-        <div fxFlex="50px">
-          <h4 class="fontSizeXL">{{booking?.start_date | date : 'dd/MM/yyyy'}}</h4>
+        <div fxFlex="30px">
+          <h4 class="fontSizeM">{{booking?.start_date | date : 'dd/MM/yyyy'}}</h4>
         </div>
-        <div fxFlex="50px">
-          <h4 class="fontSizeXL">{{booking?.start_date | date : 'hh:mm'}}</h4>
+        <div fxFlex="30px">
+          <h4 class="fontSizeM">{{booking?.start_date | date : 'hh:mm'}}</h4>
         </div>
       </div>
-      <div fxLayout="column" fxFlex>
-        <div fxFlex="50px">
+      <div fxLayout="column" fxFlex fxLayoutAlign="center center">
+        <div fxFlex="40px">
           <h2>To</h2>
         </div>
-        <div fxFlex="50px">
-          <h4 class="fontSizeXL">{{booking?.end_date | date : 'dd/MM/yyyy'}}</h4>
+        <div fxFlex="30px">
+          <h4 class="fontSizeM">{{booking?.end_date | date : 'dd/MM/yyyy'}}</h4>
         </div>
-        <div fxFlex="50px">
-          <h4 class="fontSizeXL">{{booking?.end_date | date : 'hh:mm'}}</h4>
+        <div fxFlex="30px">
+          <h4 class="fontSizeM">{{booking?.end_date | date : 'hh:mm'}}</h4>
         </div>
       </div>
     </div>

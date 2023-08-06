@@ -1,14 +1,14 @@
 <div fxLayout="column" fxFlex class="page-container">
   <div fxLayout fxFlex fxLayoutAlign="center center">
-    <h1 class="txtWhite animated2000 fadeIn animation-delay-2">Welcome</h1>
+    <h1 class="fontSize2XL txtStroke animated2000 fadeIn animation-delay-2">Welcome</h1>
   </div>
   <div fxLayout fxFlex fxLayoutAlign="center center" class="animated2000 fadeInUp w100" *ngIf="showOptions">
     <mat-grid-list [cols]="columns" [rowHeight]="rowHeight" [gutterSize]="gridGutter" *ngIf="tiles" class="w100">
       <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
                      [style.background]="tile.color" [routerLink]="tile?.linkUrl">
         <div fxLayout="column" fxFlex>
-          <div fxLayout fxFlex="50px" fxLayoutAlign="center center">
-            <h2>{{tile.title}}</h2>
+          <div fxLayout fxFlex="80px" fxLayoutAlign="center center" class="w100">
+            <h2 class="">{{tile.title}}</h2>
           </div>
           <div fxLayout fxFlex fxLayoutAlign="center center">
             <img src="assets/images/{{tile?.image}}.png" alt="{{tile?.title}}">

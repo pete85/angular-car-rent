@@ -34,11 +34,15 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   onResize() {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
-    this.columns = 6;
-    this.rowHeight = '130px';
+    this.columns = 24;
     this.gridGutter = '20px';
     if (this.vehicles) {
       this.setTiles(this.tiles);
+    }
+    if (this.innerWidth <= 992) {
+      this.rowHeight = '130px';
+    } else {
+      this.rowHeight = '140px';
     }
   }
   constructor(private _bookingsService: BookingsService,
@@ -52,17 +56,21 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   }
 
   setTiles(tiles: Tile[]) {
-    if (this.innerWidth > 960) {
+    if (this.innerWidth > 1280) {
       tiles.forEach(el => {
-        el.cols = 2
+        el.cols = 6
       });
-    } else if (this.innerWidth > 600 && this.innerWidth <= 960) {
+    } else if (this.innerWidth > 992 && this.innerWidth <= 1280) {
       tiles.forEach(el => {
-        el.cols = 3
+        el.cols = 8
+      });
+    } else if (this.innerWidth > 600 && this.innerWidth <= 992) {
+      tiles.forEach(el => {
+        el.cols = 12
       });
     } else {
       tiles.forEach(el => {
-        el.cols = 6
+        el.cols = 24
       });
     }
   }
@@ -90,7 +98,8 @@ export class VehiclesComponent implements OnInit, OnDestroy {
             this.tiles.push({
               title: el.make,
               subTitle: el.model,
-              cols: this.innerWidth > 960 ? 2 : this.innerWidth > 600 ? 3 : 6,
+              // cols: this.innerWidth > 960 ? 8 : this.innerWidth > 600 ? 12 : 24,
+              cols: this.innerWidth > 1200 ? 6 : this.innerWidth > 960 ? 8 : this.innerWidth > 600 ? 12 : 24,
               rows: 2,
               color: appColours.darkGreyRGBA,
               image: el.picture,
@@ -101,7 +110,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
           this.tiles.push({
             title: 'Add new',
             subTitle: 'vehicle',
-            cols: this.innerWidth > 960 ? 2 : this.innerWidth > 600 ? 3 : 6,
+            cols: this.innerWidth > 1200 ? 6 : this.innerWidth > 960 ? 8 : this.innerWidth > 600 ? 12 : 24,
             rows: 2,
             color: appColours.darkGreyRGBA,
             image: '',

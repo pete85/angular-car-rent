@@ -163,6 +163,26 @@ h1, h2, h3, h4, p {
   line-height: 17rem !important;
 }
 
+.txtStroke {
+  -webkit-text-stroke: 2px white;
+  color: map-get($appColours, 'grey');
+  paint-order: stroke fill;
+}
+
+.txtStroke1 {
+  -webkit-text-stroke: 1px white;
+  color: map-get($appColours, 'grey');
+  paint-order: stroke fill;
+}
+
+.txtStrokeBW {
+  color: map-get($appColours, 'grey') !important;
+  -webkit-text-stroke: 2px map-get($appColours, 'grey') !important;
+  -webkit-text-fill-color: map-get($appColours, 'white') !important; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: map-get($appColours, 'grey') !important;
+}
+
 .txtWhite {
   color: map-get($appColours, 'white') !important;
 }

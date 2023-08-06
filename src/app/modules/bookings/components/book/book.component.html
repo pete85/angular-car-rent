@@ -3,7 +3,7 @@
        class="animated2000 fadeInDown animation-delay-2 w100 filters-container">
 
     <div fxFlex="30px" fxFlex.gt-sm="100px" fxLayoutAlign="start center" class="txtWhite">
-      <h3>From</h3>
+      <h2 class="txtStroke1">From</h2>
     </div>
 
     <mat-form-field appearance="outline" class="animated fadeIn w100" fxFlex>
@@ -15,7 +15,7 @@
       <mat-datepicker #picker mat-date-filter="0"></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="animated fadeIn w200px maxw100">
+    <mat-form-field appearance="outline" class="animated fadeIn w100" fxFlex>
       <mat-label>Start Time</mat-label>
       <input matInput [(ngModel)]="filters.start_time" id="start_time" type="time">
     </mat-form-field>
@@ -28,7 +28,7 @@
        class="animated2000 fadeInDown animation-delay-2 w100 filters-container">
 
     <div fxFlex="30px" fxFlex.gt-sm="100px" fxLayoutAlign="start center" class="txtWhite">
-      <h3>To</h3>
+      <h2 class="txtStroke1">To</h2>
     </div>
 
 
@@ -42,7 +42,7 @@
       <mat-datepicker #pickerEnd mat-date-filter="0"></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="animated fadeIn w200px maxw100">
+    <mat-form-field appearance="outline" class="animated fadeIn w100" fxFlex>
       <mat-label>End Time</mat-label>
       <input matInput [(ngModel)]="filters.end_time" id="end_time" type="time">
     </mat-form-field>

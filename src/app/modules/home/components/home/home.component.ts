@@ -28,8 +28,13 @@ export class HomeComponent implements OnInit {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     this.columns = 6;
-    this.rowHeight = '120px';
+    // this.rowHeight = '120px';
     this.gridGutter = '20px';
+    if (this.innerWidth <= 992) {
+      this.rowHeight = '130px';
+    } else {
+      this.rowHeight = '150px';
+    }
     this.setTiles(this.tiles);
   }
 
