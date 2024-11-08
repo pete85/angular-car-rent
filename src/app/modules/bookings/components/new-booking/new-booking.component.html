@@ -140,15 +140,15 @@
           </div>
           <div fxLayout fxFlex="50px" fxLayoutAlign="space-between center">
             <h4>Vehicle</h4>
-            <h4>{{data?.vehicle?.make}} {{data?.vehicle?.model}} ({{data?.vehicle?.reg}})</h4>
+            <h4>{{data.vehicle?.make}} {{data.vehicle?.model}} ({{data.vehicle?.reg}})</h4>
           </div>
           <div fxLayout fxFlex="50px" fxLayoutAlign="space-between center">
             <h4>Customer</h4>
-            <h4>{{selectedCustomer?.first_name}} {{selectedCustomer?.last_name}}</h4>
+            <h4>{{selectedCustomer.first_name}} {{selectedCustomer.last_name}}</h4>
           </div>
           <div fxLayout fxFlex="50px" fxLayoutAlign="space-between center">
             <h4>Price</h4>
-            <h4>{{data?.price | currency : 'GBP'}}</h4>
+            <h4>{{data.price | currency : 'GBP'}}</h4>
           </div>
           <div fxLayout fxFlex="100px" fxLayoutAlign="space-between center">
             <button mat-raised-button color="warn" (click)="closeDialog(null)" class="margin-lr-0">Cancel</button>

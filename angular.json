@@ -34,7 +34,11 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/app/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "rxjs/internal/Subscription",
+              "rxjs/internal/BehaviorSubject"
+            ]
           },
           "configurations": {
             "production": {

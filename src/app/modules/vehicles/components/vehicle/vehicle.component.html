@@ -9,22 +9,22 @@
 
   <div fxLayout fxFlex class="w100">
     <div fxFlex="70" fxLayoutAlign="center center" *ngIf="innerWidth > 850">
-      <img src="../../../../../assets/images/{{vehicle?.picture}}.png" alt="{{vehicle?.make}}" class="w100">
+      <img src="../../../../../assets/images/{{vehicle.picture}}.png" alt="{{vehicle.make}}" class="w100">
     </div>
     <div fxLayout="column" fxFlex fxLayoutAlign="start start" class="txtWhite">
       <div class="w100 border-bottom-2px-lightGrey">
-        <h1>{{vehicle?.make}} {{vehicle?.model}}</h1>
-        <h3>{{vehicle?.date_produced | date : 'yyyy'}}</h3>
+        <h1>{{vehicle.make}} {{vehicle.model}}</h1>
+        <h3>{{vehicle.date_produced | date : 'yyyy'}}</h3>
       </div>
       <mat-divider class="bgLightGrey margin-tb-5"></mat-divider>
       <div fxLayout="column" fxFlex class="w100">
         <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Reg</h3>
-          <h3>{{vehicle?.reg}}</h3>
+          <h3>{{vehicle.reg}}</h3>
         </div>
         <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Colour</h3>
-          <h3>{{vehicle?.color}}</h3>
+          <h3>{{vehicle.color}}</h3>
         </div>
         <div fxLayout fxFlex="35px" fxLayoutAlign="space-between center">
           <h3>Type</h3>
